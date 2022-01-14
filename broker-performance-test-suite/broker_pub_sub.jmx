@@ -275,7 +275,12 @@
             <stringProp name="mqtt.message_to_sent">hello emqx ！！！</stringProp>
             <boolProp name="mqtt.retained_message">false</boolProp>
           </net.xmeter.samplers.PubSampler>
-          <hashTree/>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
         </hashTree>
       </hashTree>
     </hashTree>

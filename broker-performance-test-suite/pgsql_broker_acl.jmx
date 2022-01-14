@@ -88,8 +88,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5000</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">40000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -100,7 +100,7 @@
           <stringProp name="mqtt.server">${__RandomFromMultipleVars(emqx_ip1|emqx_ip2|emqx_ip3,)}</stringProp>
           <stringProp name="mqtt.port">1883</stringProp>
           <stringProp name="mqtt.version">3.1</stringProp>
-          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.conn_timeout">100</stringProp>
           <stringProp name="mqtt.protocol">TCP</stringProp>
           <stringProp name="mqtt.ws_path"></stringProp>
           <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
@@ -118,7 +118,7 @@
         <hashTree/>
         <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler" enabled="true">
           <stringProp name="mqtt.topic_name">t/1</stringProp>
-          <stringProp name="mqtt.qos_level">0</stringProp>
+          <stringProp name="mqtt.qos_level">1</stringProp>
           <boolProp name="mqtt.add_timestamp">true</boolProp>
           <boolProp name="mqtt.debug_response">true</boolProp>
           <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
@@ -148,8 +148,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">5000</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">40000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -160,7 +160,7 @@
           <stringProp name="mqtt.server">${__RandomFromMultipleVars(emqx_ip1|emqx_ip2|emqx_ip3,)}</stringProp>
           <stringProp name="mqtt.port">1883</stringProp>
           <stringProp name="mqtt.version">3.1</stringProp>
-          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.conn_timeout">100</stringProp>
           <stringProp name="mqtt.protocol">TCP</stringProp>
           <stringProp name="mqtt.ws_path"></stringProp>
           <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
@@ -176,9 +176,9 @@
           <stringProp name="mqtt.conn_clean_session">true</stringProp>
         </net.xmeter.samplers.ConnectSampler>
         <hashTree/>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler 2" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler Wildcard" enabled="true">
           <stringProp name="mqtt.topic_name">t/#</stringProp>
-          <stringProp name="mqtt.qos_level">0</stringProp>
+          <stringProp name="mqtt.qos_level">1</stringProp>
           <boolProp name="mqtt.add_timestamp">true</boolProp>
           <boolProp name="mqtt.debug_response">true</boolProp>
           <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
@@ -208,7 +208,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -239,18 +239,24 @@
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">40000</stringProp>
+          <stringProp name="ActionProcessor.duration">50000</stringProp>
         </TestAction>
         <hashTree/>
         <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
           <stringProp name="mqtt.topic_name">t/1</stringProp>
-          <stringProp name="mqtt.qos_level">0</stringProp>
+          <stringProp name="mqtt.qos_level">1</stringProp>
           <boolProp name="mqtt.add_timestamp">true</boolProp>
           <stringProp name="mqtt.message_type">String</stringProp>
           <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
           <stringProp name="mqtt.message_to_sent">hello emqx</stringProp>
           <boolProp name="mqtt.retained_message">false</boolProp>
         </net.xmeter.samplers.PubSampler>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">5000</stringProp>
+        </TestAction>
         <hashTree/>
       </hashTree>
     </hashTree>

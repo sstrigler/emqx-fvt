@@ -42,6 +42,16 @@
             <stringProp name="Argument.desc">emqx password</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="mqtt_username" elementType="Argument">
+            <stringProp name="Argument.name">mqtt_username</stringProp>
+            <stringProp name="Argument.value">emqx</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mqtt_password" elementType="Argument">
+            <stringProp name="Argument.name">mqtt_password</stringProp>
+            <stringProp name="Argument.value">public</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -107,7 +117,7 @@
           <stringProp name="mqtt.clientcert_file_path"></stringProp>
           <stringProp name="mqtt.clientcert_password"></stringProp>
           <stringProp name="mqtt.user_name"></stringProp>
-          <stringProp name="mqtt.password"></stringProp>
+          <stringProp name="mqtt.password">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b3BpYyI6InQvMSIsInVzZXJuYW1lIjoiZW1xeCIsImlhdCI6MTUxNjIzOTAyMn0.AVnXN1V9CN3pMrKadD485S9lNxzvfu-__kVayVulpe0</stringProp>
           <stringProp name="mqtt.client_id_prefix"></stringProp>
           <boolProp name="mqtt.client_id_suffix">true</boolProp>
           <stringProp name="mqtt.conn_keep_alive">300</stringProp>
@@ -126,6 +136,13 @@
           <stringProp name="ActionProcessor.duration">300000</stringProp>
         </TestAction>
         <hashTree/>
+        <net.xmeter.samplers.EfficientDisConnectSampler guiclass="net.xmeter.gui.EfficientDisConnectSamplerUI" testclass="net.xmeter.samplers.EfficientDisConnectSampler" testname="Efficient MQTT DisConnect" enabled="true"/>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">30000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
       </hashTree>
     </hashTree>
   </hashTree>

@@ -573,6 +573,15 @@ jedis.close();
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ser_defined_variables" enabled="true">
@@ -745,7 +754,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">300000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -779,7 +788,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">250000</stringProp>
+                <stringProp name="ConstantTimer.delay">150000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -1036,7 +1045,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${mysql_ip}:3306&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT password_hash FROM mqtt_user where username = ${username} LIMIT 1&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;query_timeout&quot;:&quot;5s&quot;,&quot;backend&quot;:&quot;mysql&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${mysql_ip}:3306&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT password_hash FROM mqtt_user where username = ${username} LIMIT 1&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;query_timeout&quot;:&quot;5s&quot;,&quot;backend&quot;:&quot;mysql&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -1065,6 +1074,15 @@ VALUES
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
@@ -1238,7 +1256,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">300000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -1272,7 +1290,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">250000</stringProp>
+                <stringProp name="ConstantTimer.delay">150000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -1495,7 +1513,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_user&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;password_hash_field&quot;:&quot;password_hash&quot;,&quot;salt_field&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:8,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;backend&quot;:&quot;mongodb&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}&#xd;
+                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_user&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;password_hash_field&quot;:&quot;password_hash&quot;,&quot;salt_field&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;backend&quot;:&quot;mongodb&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}&#xd;
 &#xd;
 </stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1526,6 +1544,15 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
@@ -1699,7 +1726,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">300000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -1733,7 +1760,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">250000</stringProp>
+                <stringProp name="ConstantTimer.delay">150000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -1875,8 +1902,8 @@ SampleResult.setResponseData(ReData)</stringProp>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="${scripts_path}/broker_jwt_connect.jmx" elementType="HTTPFileArg">
-                    <stringProp name="File.path">${scripts_path}/broker_jwt_connect.jmx</stringProp>
+                  <elementProp name="${scripts_path}/jwt_broker_connect.jmx" elementType="HTTPFileArg">
+                    <stringProp name="File.path">${scripts_path}/jwt_broker_connect.jmx</stringProp>
                     <stringProp name="File.paramname">test_case</stringProp>
                     <stringProp name="File.mimetype">application/octet-stream</stringProp>
                   </elementProp>
@@ -1963,6 +1990,15 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
@@ -2136,7 +2172,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">300000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -2170,7 +2206,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">350000</stringProp>
+                <stringProp name="ConstantTimer.delay">150000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -2277,7 +2313,431 @@ writer.close();</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Attestation PgSQL" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Attestation HTTP" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="set up environment" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
+              <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+                <collectionProp name="HTTPFileArgs.files">
+                  <elementProp name="${scripts_path}/http_broker_connect.jmx" elementType="HTTPFileArg">
+                    <stringProp name="File.path">${scripts_path}/http_broker_connect.jmx</stringProp>
+                    <stringProp name="File.paramname">test_case</stringProp>
+                    <stringProp name="File.mimetype">application/octet-stream</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ser_defined_variables" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="overwrite" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">overwrite</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/commercial_service/rest/api/fileupload</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">test_id</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..testId</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err_test_id</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">xmeter-api-key</stringProp>
+                    <stringProp name="Header.value">${api_key}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add HTTP Server Attestation" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;method&quot;:&quot;post&quot;,&quot;url&quot;:&quot;http://${http_ip}:8080/post/request&quot;,&quot;headers&quot;:{},&quot;body&quot;:{&quot;username&quot;:&quot;${username}&quot;,&quot;password&quot;:&quot;${password}&quot;},&quot;pool_size&quot;:64,&quot;connect_timeout&quot;:&quot;5s&quot;,&quot;request_timeout&quot;:&quot;5s&quot;,&quot;enable_pipelining&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false,&quot;verify&quot;:&quot;verify_none&quot;},&quot;backend&quot;:&quot;http&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}&#xd;
+&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+              <stringProp name="HTTPSampler.port">18083</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${api_version}/authentication</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ser_defined_variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/commercial_service/rest/testcase/${userid}/${test_id}/script_info</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ramp_up</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.threadGroups[0].rampup</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err_rampup</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">300</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">xmeter-authorization</stringProp>
+                    <stringProp name="Header.value">${token}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Start The Test" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80000,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;rampupPeriod&quot;:${ramp_up},&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80000,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:80000,&quot;threadGroupName&quot;:&quot;Pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;dockerIpConfigEnabled&quot;:true,&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/commercial_service/rest/testcase/${userid}/request</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">report_id</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err_report_id</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <stringProp name="TestPlan.comments">https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="script">import java.io.File;
+import java.io.FileWriter;
+
+FileWriter writer = new FileWriter(&quot;${report_file}&quot;, true);
+String content = &quot;mysql connect&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
+writer.write(content);
+writer.flush();
+writer.close();</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">3000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">xmeter-authorization</stringProp>
+                    <stringProp name="Header.value">${token}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="reset environment" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Check Connect" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+              <stringProp name="HTTPSampler.port">18083</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${api_version}/nodes</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">count1;count2;count3</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[0].connections;$.[1].connections;$.[2].connections</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1;1;1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err;0;0</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
+ System.out.println(count);
+ if(count!=400000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Remove HTTP Attestation" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+              <stringProp name="HTTPSampler.port">18083</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based%3Ahttp</stringProp>
+              <stringProp name="HTTPSampler.method">DELETE</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49590">204</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">150000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Running Test" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/commercial_service/rest/testcase/${userid}/runningtests</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">xmeter-authorization</stringProp>
+                    <stringProp name="Header.value">${token}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">test_status</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..status</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err_test_status</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">test_id</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">err_test_id</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${test_status}&quot;==&quot;RUNNING&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Stop Test" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/commercial_service/rest/testcase/testrun/stop/${test_id}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">xmeter-authorization</stringProp>
+                      <stringProp name="Header.value">${token}</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">content-type</stringProp>
+                      <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">X-Requested-With</stringProp>
+                      <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+                <intProp name="ActionProcessor.action">1</intProp>
+                <intProp name="ActionProcessor.target">0</intProp>
+                <stringProp name="ActionProcessor.duration">200000</stringProp>
+              </TestAction>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Attestation PgSQL" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
           <stringProp name="TestPlan.comments">Performance issues to be fixed</stringProp>
@@ -2425,7 +2885,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT password_hash FROM mqtt_user where username = ${username} LIMIT 1&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;backend&quot;:&quot;postgresql&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT password_hash FROM mqtt_user where username = ${username} LIMIT 1&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;backend&quot;:&quot;postgresql&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -2454,6 +2914,15 @@ VALUES
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rampup" enabled="true">
@@ -2516,7 +2985,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:10000,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;rampupPeriod&quot;:${ramp_up},&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:10000,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:10000,&quot;threadGroupName&quot;:&quot;Pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;dockerIpConfigEnabled&quot;:true,&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80000,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;rampupPeriod&quot;:${ramp_up},&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80000,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:80000,&quot;threadGroupName&quot;:&quot;Pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;dockerIpConfigEnabled&quot;:true,&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -2615,7 +3084,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=250000) {
+ if(count!=400000) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -2627,7 +3096,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">260000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
               <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor-node" enabled="false">
@@ -2682,7 +3151,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="ConstantTimer.delay">140000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -2813,7 +3282,7 @@ writer.close();</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="MQTT Connect" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Mqtt Connect" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
@@ -2979,7 +3448,7 @@ writer.close();</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">400000</stringProp>
+                <stringProp name="ConstantTimer.delay">290000</stringProp>
               </ConstantTimer>
               <hashTree/>
               <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor-cluster" enabled="true">
@@ -3028,7 +3497,7 @@ writer.close();</stringProp>
             <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
-              <stringProp name="ActionProcessor.duration">250000</stringProp>
+              <stringProp name="ActionProcessor.duration">150000</stringProp>
             </TestAction>
             <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Running Test" enabled="true">
@@ -3273,7 +3742,7 @@ writer.close();</stringProp>
             <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
               <intProp name="ActionProcessor.action">1</intProp>
               <intProp name="ActionProcessor.target">0</intProp>
-              <stringProp name="ActionProcessor.duration">500000</stringProp>
+              <stringProp name="ActionProcessor.duration">600000</stringProp>
             </TestAction>
             <hashTree/>
           </hashTree>
@@ -3544,8 +4013,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
-</stringProp>
+                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;5m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3564,7 +4032,17 @@ VALUES
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
@@ -3625,7 +4103,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${mysql_ip}:3306&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;mysql&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${mysql_ip}:3306&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;mysql&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3655,6 +4133,15 @@ VALUES
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
@@ -3668,7 +4155,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:60005,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:60005,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:5,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80010,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80010,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:10,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -3767,7 +4254,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60005) {
+ if(count!=80010) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -3779,7 +4266,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">65000</stringProp>
+                <stringProp name="ConstantTimer.delay">70000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -3812,7 +4299,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60000) {
+ if(count!=80000) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -4003,7 +4490,7 @@ writer.close();</stringProp>
               <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
                 <intProp name="ActionProcessor.action">1</intProp>
                 <intProp name="ActionProcessor.target">0</intProp>
-                <stringProp name="ActionProcessor.duration">300000</stringProp>
+                <stringProp name="ActionProcessor.duration">200000</stringProp>
               </TestAction>
               <hashTree/>
             </hashTree>
@@ -4069,7 +4556,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
+                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;5m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
 </stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4089,7 +4576,17 @@ SampleResult.setResponseData(ReData)</stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
@@ -4150,7 +4647,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_acl&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;pool_size&quot;:8,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;type&quot;:&quot;mongodb&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_acl&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;type&quot;:&quot;mongodb&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4180,6 +4677,15 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
@@ -4193,7 +4699,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:60005,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:60005,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:5,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80010,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80010,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:10,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4292,7 +4798,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60005) {
+ if(count!=80010) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -4337,7 +4843,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60000) {
+ if(count!=80000) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -4586,7 +5092,7 @@ jedis.close();
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
+                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;5m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
 </stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4606,7 +5112,17 @@ jedis.close();
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
@@ -4667,7 +5183,7 @@ jedis.close();
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;pool_size&quot;:8,&quot;cmd&quot;:&quot;HGETALL mqtt_acl:${username}&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;type&quot;:&quot;redis&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;pool_size&quot;:64,&quot;cmd&quot;:&quot;HGETALL mqtt_acl:${username}&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;type&quot;:&quot;redis&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4697,6 +5213,15 @@ jedis.close();
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
@@ -4710,7 +5235,7 @@ jedis.close();
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:60005,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:60005,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:30000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:5,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80010,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80010,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:10,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4809,7 +5334,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60005) {
+ if(count!=80010) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -4821,7 +5346,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">65000</stringProp>
+                <stringProp name="ConstantTimer.delay">70000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -4854,7 +5379,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=60000) {
+ if(count!=80000) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -4864,6 +5389,10 @@ writer.close();</stringProp>
                 <stringProp name="BeanShellAssertion.parameters"></stringProp>
                 <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
               </BeanShellAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">15000</stringProp>
+              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Redis Authority" enabled="true">
@@ -5003,7 +5532,7 @@ writer.close();</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Authority PgSQL" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Authority PgSQL" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
           <stringProp name="TestPlan.comments">Performance issues to be fixed</stringProp>
@@ -5033,7 +5562,7 @@ writer.close();</stringProp>
               <stringProp name="username">test</stringProp>
             </JDBCDataSource>
             <hashTree/>
-            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Create Type ACTION &amp; PERMISSION" enabled="false">
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Create Type ACTION &amp; PERMISSION" enabled="true">
               <stringProp name="dataSource">pgsql</stringProp>
               <stringProp name="queryType">Update Statement</stringProp>
               <stringProp name="query">CREATE TYPE ACTION AS ENUM(&apos;publish&apos;,&apos;subscribe&apos;,&apos;all&apos;);
@@ -5155,8 +5684,8 @@ VALUES
               <stringProp name="dataSource">pgsql</stringProp>
               <stringProp name="queryType">Update Statement</stringProp>
               <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES 
-(&apos;127.0.0.1&apos;, &apos;emqx1&apos;, &apos;all&apos;, &apos;publish&apos;, &apos;allow&apos;,&apos;t/#&apos;),
-(&apos;127.0.0.1&apos;, &apos;emqx2&apos;, &apos;all&apos;, &apos;subscribe&apos;, &apos;allow&apos;,&apos;t/#&apos;),
+(&apos;127.0.0.1&apos;, &apos;emqx1&apos;, &apos;all&apos;, &apos;publish&apos;, &apos;allow&apos;,&apos;t/1&apos;),
+(&apos;127.0.0.1&apos;, &apos;emqx2&apos;, &apos;all&apos;, &apos;subscribe&apos;, &apos;allow&apos;,&apos;t/1&apos;),
 (&apos;127.0.0.1&apos;, &apos;emqx3&apos;, &apos;all&apos;, &apos;all&apos;, &apos;allow&apos;,&apos;t/#&apos;);</stringProp>
               <stringProp name="queryArguments"></stringProp>
               <stringProp name="queryArgumentsTypes"></stringProp>
@@ -5184,7 +5713,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
+                    <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:true,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;5m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}&#xd;
 </stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -5204,12 +5733,22 @@ VALUES
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Script Upload" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="${scripts_path}/broker_acl_pgsql.jmx" elementType="HTTPFileArg">
-                    <stringProp name="File.path">${scripts_path}/broker_acl_pgsql.jmx</stringProp>
+                  <elementProp name="${scripts_path}/pgsql_broker_acl.jmx" elementType="HTTPFileArg">
+                    <stringProp name="File.path">${scripts_path}/pgsql_broker_acl.jmx</stringProp>
                     <stringProp name="File.paramname">test_case</stringProp>
                     <stringProp name="File.mimetype">application/octet-stream</stringProp>
                   </elementProp>
@@ -5265,7 +5804,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;postgresql&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;postgresql&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -5295,6 +5834,15 @@ VALUES
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
@@ -5308,7 +5856,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:10001,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:10001,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:5000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:5000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:1,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;testId&quot;:&quot;${test_id}&quot;,&quot;vuNumber&quot;:80010,&quot;executionDuration&quot;:-1,&quot;loopCount&quot;:1,&quot;sampleUserNumber&quot;:1,&quot;variables&quot;:[{&quot;description&quot;:&quot;emqx server ip1&quot;,&quot;name&quot;:&quot;emqx_ip1&quot;,&quot;value&quot;:&quot;${emqx_private_ip1}&quot;},{&quot;name&quot;:&quot;emqx_ip2&quot;,&quot;value&quot;:&quot;${emqx_private_ip2}&quot;,&quot;description&quot;:&quot;emqx server ip2&quot;},{&quot;name&quot;:&quot;emqx_ip3&quot;,&quot;value&quot;:&quot;${emqx_private_ip3}&quot;,&quot;description&quot;:&quot;emqx server ip3&quot;}],&quot;distributions&quot;:[{&quot;siteId&quot;:1,&quot;value&quot;:80010,&quot;tgUsers&quot;:[{&quot;id&quot;:0,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:1,&quot;number&quot;:40000,&quot;threadGroupName&quot;:&quot;sub-wildcard&quot;,&quot;throughputs&quot;:[]},{&quot;id&quot;:2,&quot;number&quot;:10,&quot;threadGroupName&quot;:&quot;pub&quot;,&quot;throughputs&quot;:[]}]}],&quot;applicationId&quot;:${applicationId},&quot;clientTime&quot;:${__time(,)}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -5407,7 +5955,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=10001) {
+ if(count!=80010) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -5419,7 +5967,7 @@ writer.close();</stringProp>
               </BeanShellAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">50000</stringProp>
+                <stringProp name="ConstantTimer.delay">70000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -5452,7 +6000,7 @@ writer.close();</stringProp>
               <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
                 <stringProp name="BeanShellAssertion.query"> int count = ${count1}+${count2}+${count3};
  System.out.println(count);
- if(count!=10000) {
+ if(count!=80000) {
      Failure = true; 
      FailureMessage = &quot;failed&quot;;
  }else{
@@ -5462,6 +6010,10 @@ writer.close();</stringProp>
                 <stringProp name="BeanShellAssertion.parameters"></stringProp>
                 <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
               </BeanShellAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">10000</stringProp>
+              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Pgsql Authority" enabled="true">
@@ -5494,7 +6046,7 @@ writer.close();</stringProp>
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="ConstantTimer.delay">120000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
