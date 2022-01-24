@@ -4191,7 +4191,7 @@ VALUES
 import java.io.FileWriter;
 
 FileWriter writer = new FileWriter(&quot;${report_file}&quot;, true);
-String content = &quot;redis authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
+String content = &quot;mysql authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
 writer.write(content);
 writer.flush();
 writer.close();</stringProp>
@@ -4735,7 +4735,7 @@ SampleResult.setResponseData(ReData)</stringProp>
 import java.io.FileWriter;
 
 FileWriter writer = new FileWriter(&quot;${report_file}&quot;, true);
-String content = &quot;redis authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
+String content = &quot;mongo authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
 writer.write(content);
 writer.flush();
 writer.close();</stringProp>
@@ -5390,10 +5390,6 @@ writer.close();</stringProp>
                 <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
               </BeanShellAssertion>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Redis Authority" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -5892,7 +5888,7 @@ VALUES
 import java.io.FileWriter;
 
 FileWriter writer = new FileWriter(&quot;${report_file}&quot;, true);
-String content = &quot;redis authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
+String content = &quot;pgsql authority&quot; + &quot; &quot; + &quot;${__timeShift(yyyyMMdd HH:mm:ss,,,,)}&quot; + &quot;  &quot; +  &quot;https://${xmeter_ip}:${port}/commercialPage.html#/testrunMonitor/${report_id}&quot; + &quot;\n&quot;;
 writer.write(content);
 writer.flush();
 writer.close();</stringProp>
@@ -6010,10 +6006,6 @@ writer.close();</stringProp>
                 <stringProp name="BeanShellAssertion.parameters"></stringProp>
                 <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
               </BeanShellAssertion>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">10000</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Pgsql Authority" enabled="true">
