@@ -87,14 +87,24 @@
             <stringProp name="Argument.value">${__property(pgsql_ip,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="redis_ip" elementType="Argument">
-            <stringProp name="Argument.name">redis_ip</stringProp>
-            <stringProp name="Argument.value">${__property(redis_ip,,)}</stringProp>
+          <elementProp name="redis_private_ip" elementType="Argument">
+            <stringProp name="Argument.name">redis_private_ip</stringProp>
+            <stringProp name="Argument.value">${__property(redis_private_ip,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="mongo_ip" elementType="Argument">
-            <stringProp name="Argument.name">mongo_ip</stringProp>
-            <stringProp name="Argument.value">${__property(mongo_ip,,)}</stringProp>
+          <elementProp name="redis_public_ip" elementType="Argument">
+            <stringProp name="Argument.name">redis_public_ip</stringProp>
+            <stringProp name="Argument.value">${__property(redis_public_ip,,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mongo_private_ip" elementType="Argument">
+            <stringProp name="Argument.name">mongo_private_ip</stringProp>
+            <stringProp name="Argument.value">${__property(mongo_private_ip,,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mongo_public_ip" elementType="Argument">
+            <stringProp name="Argument.name">mongo_public_ip</stringProp>
+            <stringProp name="Argument.value">${__property(mongo_public_ip,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="http_ip" elementType="Argument">
@@ -468,7 +478,7 @@
             <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Insert Mqtt_user In Redis" enabled="true">
               <stringProp name="BeanShellSampler.query">import redis.clients.jedis.Jedis;
  
-Jedis jedis = new Jedis(&quot;${redis_ip}&quot;,6379);
+Jedis jedis = new Jedis(&quot;${redis_public_ip}&quot;,6379);
  
 //jedis.auth(&quot;&quot;);
 jedis.select(0);
@@ -543,7 +553,7 @@ jedis.close();
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;,&quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:8,&quot;cmd&quot;:&quot;HMGET mqtt_user:${username} password_hash&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;backend&quot;:&quot;redis&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_private_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;,&quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:64,&quot;cmd&quot;:&quot;HMGET mqtt_user:${username} password_hash&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;backend&quot;:&quot;redis&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -1442,7 +1452,7 @@ import com.mongodb.MongoCredential
 import com.mongodb.ServerAddress
 
 // disable user and pwd connect
-GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_ip}&quot;,27017))
+GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_public_ip}&quot;,27017))
 
 def DB=client.getDB(&quot;mqtt&quot;)
 //insert data
@@ -1513,7 +1523,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_user&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;password_hash_field&quot;:&quot;password_hash&quot;,&quot;salt_field&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;backend&quot;:&quot;mongodb&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}&#xd;
+                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_private_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_user&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;password_hash_field&quot;:&quot;password_hash&quot;,&quot;salt_field&quot;:&quot;&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;: &quot;plain&quot;, &quot;salt_position&quot;:&quot;prefix&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;backend&quot;:&quot;mongodb&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}&#xd;
 &#xd;
 </stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4517,7 +4527,7 @@ import com.mongodb.MongoCredential
 import com.mongodb.ServerAddress
 
 // disable user and pwd connect
-GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_ip}&quot;,27017))
+GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_public_ip}&quot;,27017))
 
 def DB=client.getDB(&quot;mqtt&quot;)
 //insert data
@@ -4539,7 +4549,7 @@ import com.mongodb.MongoCredential
 import com.mongodb.ServerAddress
 
 // disable user and pwd connect
-GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_ip}&quot;,27017))
+GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongo_public_ip}&quot;,27017))
 
 def DB=client.getDB(&quot;mqtt&quot;)
 //insert data
@@ -4647,7 +4657,7 @@ SampleResult.setResponseData(ReData)</stringProp>
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_acl&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;type&quot;:&quot;mongodb&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;mongo_type&quot;:&quot;single&quot;,&quot;server&quot;:&quot;${mongo_private_ip}:27017&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;collection&quot;:&quot;mqtt_acl&quot;,&quot;selector&quot;:{&quot;username&quot;:&quot;${username}&quot;},&quot;pool_size&quot;:64,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;topology&quot;:{&quot;connect_timeout_ms&quot;:20000},&quot;type&quot;:&quot;mongodb&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -4688,7 +4698,7 @@ SampleResult.setResponseData(ReData)</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -4764,7 +4774,7 @@ writer.close();</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="reset environment" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="reset environment" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5049,7 +5059,7 @@ SampleResult.setResponseData(ReData)</stringProp>
             <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Insert Mqtt_user In Redis" enabled="true">
               <stringProp name="BeanShellSampler.query">import redis.clients.jedis.Jedis;
  
-Jedis jedis = new Jedis(&quot;${redis_ip}&quot;,6379);
+Jedis jedis = new Jedis(&quot;${redis_public_ip}&quot;,6379);
  
 //jedis.auth(&quot;&quot;);
 jedis.select(0);
@@ -5069,7 +5079,7 @@ jedis.close();
             <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Insert Mqtt_acl In Redis" enabled="true">
               <stringProp name="BeanShellSampler.query">import redis.clients.jedis.Jedis;
  
-Jedis jedis = new Jedis(&quot;${redis_ip}&quot;,6379);
+Jedis jedis = new Jedis(&quot;${redis_public_ip}&quot;,6379);
  
 //jedis.auth(&quot;&quot;);
 jedis.select(0);
@@ -5183,7 +5193,7 @@ jedis.close();
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;pool_size&quot;:64,&quot;cmd&quot;:&quot;HGETALL mqtt_acl:${username}&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;type&quot;:&quot;redis&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${redis_public_ip}:6379&quot;,&quot;redis_type&quot;:&quot;single&quot;,&quot;database&quot;:0,&quot;auto_reconnect&quot;:true,&quot;password&quot;:&quot;&quot;,&quot;pool_size&quot;:64,&quot;cmd&quot;:&quot;HGETALL mqtt_acl:${username}&quot;,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;type&quot;:&quot;redis&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -5389,6 +5399,10 @@ writer.close();</stringProp>
                 <stringProp name="BeanShellAssertion.parameters"></stringProp>
                 <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
               </BeanShellAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">10000</stringProp>
+              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Redis Authority" enabled="true">
