@@ -4698,7 +4698,7 @@ SampleResult.setResponseData(ReData)</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="run test" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -4774,7 +4774,7 @@ writer.close();</stringProp>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="reset environment" enabled="false">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="reset environment" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">true</boolProp>
           </TransactionController>
@@ -5814,7 +5814,7 @@ VALUES
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;postgresql&quot;}</stringProp>
+                    <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:5432&quot;,&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;public123&quot;,&quot;database&quot;:&quot;mqtt&quot;,&quot;pool_size&quot;:64,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false,&quot;verify&quot;:&quot;verify_none&quot;},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username}&quot;,&quot;type&quot;:&quot;postgresql&quot;}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -6060,7 +6060,7 @@ writer.close();</stringProp>
               <stringProp name="dataSource">pgsql</stringProp>
               <stringProp name="queryType">Update Statement</stringProp>
               <stringProp name="query">DELETE FROM mqtt_user WHERE password_hash = &apos;public&apos;;
-DELETE FROM mqtt_acl WHERE topic = &apos;t/#&apos;;</stringProp>
+DELETE FROM mqtt_acl WHERE clientid = &apos;all&apos;;</stringProp>
               <stringProp name="queryArguments"></stringProp>
               <stringProp name="queryArgumentsTypes"></stringProp>
               <stringProp name="variableNames"></stringProp>
