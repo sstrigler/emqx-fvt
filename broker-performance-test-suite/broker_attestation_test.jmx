@@ -5032,7 +5032,7 @@ writer.close();</stringProp>
               <stringProp name="username">test</stringProp>
             </JDBCDataSource>
             <hashTree/>
-            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Create Type ACTION &amp; PERMISSION" enabled="true">
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Create Type ACTION &amp; PERMISSION" enabled="false">
               <stringProp name="dataSource">pgsql</stringProp>
               <stringProp name="queryType">Update Statement</stringProp>
               <stringProp name="query">CREATE TYPE ACTION AS ENUM(&apos;publish&apos;,&apos;subscribe&apos;,&apos;all&apos;);
@@ -5369,7 +5369,7 @@ writer.close();</stringProp>
               </BeanShellPostProcessor>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">3000</stringProp>
+                <stringProp name="ConstantTimer.delay">5000</stringProp>
               </ConstantTimer>
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
