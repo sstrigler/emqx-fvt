@@ -16,7 +16,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="emqx_ip" elementType="Argument">
             <stringProp name="Argument.name">emqx_ip</stringProp>
-            <stringProp name="Argument.value">${__property(emqx_ip,,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.value">${__property(emqx_ip,,192.168.0.234)}</stringProp>
             <stringProp name="Argument.desc">emqx server ip</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -44,12 +44,12 @@
           </elementProp>
           <elementProp name="test_pwd" elementType="Argument">
             <stringProp name="Argument.name">test_pwd</stringProp>
-            <stringProp name="Argument.value">123456</stringProp>
+            <stringProp name="Argument.value">Test123456</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="new_pwd" elementType="Argument">
             <stringProp name="Argument.name">new_pwd</stringProp>
-            <stringProp name="Argument.value">123456789</stringProp>
+            <stringProp name="Argument.value">123456Test</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="test_tag" elementType="Argument">

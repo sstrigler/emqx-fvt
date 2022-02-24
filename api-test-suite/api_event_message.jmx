@@ -163,13 +163,13 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;$event/client_connected&quot;: true,&#xd;
-  &quot;$event/client_disconnected&quot;: true,&#xd;
-  &quot;$event/client_subscribed&quot;: true,&#xd;
-  &quot;$event/client_unsubscribed&quot;: true,&#xd;
-  &quot;$event/message_acked&quot;: true,&#xd;
-  &quot;$event/message_delivered&quot;: true,&#xd;
-  &quot;$event/message_dropped&quot;: true&#xd;
+  &quot;client_connected&quot;: true,&#xd;
+  &quot;client_disconnected&quot;: true,&#xd;
+  &quot;client_subscribed&quot;: true,&#xd;
+  &quot;client_unsubscribed&quot;: true,&#xd;
+  &quot;message_acked&quot;: true,&#xd;
+  &quot;message_delivered&quot;: true,&#xd;
+  &quot;message_dropped&quot;: true&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -210,7 +210,7 @@
           <stringProp name="mqtt.conn_clean_session">true</stringProp>
         </net.xmeter.samplers.ConnectSampler>
         <hashTree/>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_connected" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_connected" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_connected</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -230,7 +230,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_subscribed" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_subscribed" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_subscribed</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -250,7 +250,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_unsubscribed" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_unsubscribed" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_unsubscribed</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -270,7 +270,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_delivered" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_delivered" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_delivered</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -290,7 +290,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_dropped" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_dropped" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_dropped</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -310,7 +310,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_acked" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_acked" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_acked</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -330,7 +330,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_disconnected" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_disconnected" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_disconnected</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -455,13 +455,13 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;$event/client_connected&quot;: true,&#xd;
-  &quot;$event/client_disconnected&quot;: true,&#xd;
-  &quot;$event/client_subscribed&quot;: true,&#xd;
-  &quot;$event/client_unsubscribed&quot;: true,&#xd;
-  &quot;$event/message_acked&quot;: true,&#xd;
-  &quot;$event/message_delivered&quot;: true,&#xd;
-  &quot;$event/message_dropped&quot;: true&#xd;
+  &quot;client_connected&quot;: true,&#xd;
+  &quot;client_disconnected&quot;: true,&#xd;
+  &quot;client_subscribed&quot;: true,&#xd;
+  &quot;client_unsubscribed&quot;: true,&#xd;
+  &quot;message_acked&quot;: true,&#xd;
+  &quot;message_delivered&quot;: true,&#xd;
+  &quot;message_dropped&quot;: true&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -502,7 +502,7 @@
           <stringProp name="mqtt.conn_clean_session">true</stringProp>
         </net.xmeter.samplers.ConnectSampler>
         <hashTree/>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_connected" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_connected" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_connected</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -522,7 +522,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_subscribed" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_subscribed" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_subscribed</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -542,7 +542,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_unsubscribed" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_unsubscribed" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_unsubscribed</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -562,7 +562,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_delivered" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_delivered" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_delivered</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -582,7 +582,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_dropped" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_dropped" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_dropped</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -602,7 +602,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/message_acked" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -message_acked" enabled="true">
           <stringProp name="mqtt.topic_name">$event/message_acked</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -622,7 +622,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -$event/client_disconnected" enabled="true">
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler -client_disconnected" enabled="true">
           <stringProp name="mqtt.topic_name">$event/client_disconnected</stringProp>
           <stringProp name="mqtt.qos_level">0</stringProp>
           <boolProp name="mqtt.add_timestamp">false</boolProp>
@@ -693,13 +693,13 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;$event/client_connected&quot;: true,&#xd;
-  &quot;$event/client_disconnected&quot;: true,&#xd;
-  &quot;$event/client_subscribed&quot;: true,&#xd;
-  &quot;$event/client_unsubscribed&quot;: true,&#xd;
-  &quot;$event/message_acked&quot;: true,&#xd;
-  &quot;$event/message_delivered&quot;: true,&#xd;
-  &quot;$event/message_dropped&quot;: true&#xd;
+  &quot;client_connected&quot;: true,&#xd;
+  &quot;client_disconnected&quot;: true,&#xd;
+  &quot;client_subscribed&quot;: true,&#xd;
+  &quot;client_unsubscribed&quot;: true,&#xd;
+  &quot;message_acked&quot;: true,&#xd;
+  &quot;message_delivered&quot;: true,&#xd;
+  &quot;message_dropped&quot;: true&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="API MongoDB Authn" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="emqx_ip" elementType="Argument">
+            <stringProp name="Argument.name">emqx_ip</stringProp>
+            <stringProp name="Argument.value">${__property(emqx_ip,,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.desc">emqx server ip</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="emqx_user" elementType="Argument">
+            <stringProp name="Argument.name">emqx_user</stringProp>
+            <stringProp name="Argument.value">admin</stringProp>
+            <stringProp name="Argument.desc">emqx account</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="emqx_pwd" elementType="Argument">
+            <stringProp name="Argument.name">emqx_pwd</stringProp>
+            <stringProp name="Argument.value">public</stringProp>
+            <stringProp name="Argument.desc">emqx password</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="api_version" elementType="Argument">
+            <stringProp name="Argument.name">api_version</stringProp>
+            <stringProp name="Argument.value">/api/v5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mongodb_ip" elementType="Argument">
+            <stringProp name="Argument.name">mongodb_ip</stringProp>
+            <stringProp name="Argument.value">${__property(mongodb_ip,,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MongoDB Authn Success --Single" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">18083</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">http://${emqx_ip}</stringProp>
+              <stringProp name="Authorization.username">${emqx_user}</stringProp>
+              <stringProp name="Authorization.password">${emqx_pwd}</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Connect Mongo &amp; Insert &quot;mqtt_user&quot;" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import com.mongodb.*
+import com.gmongo.GMongoClient
+import com.mongodb.MongoCredential
+import com.mongodb.ServerAddress
+
+// disable user and pwd connect
+GMongoClient client = new GMongoClient(new ServerAddress(&quot;${mongodb_ip}&quot;,27017))
+
+def DB=client.getDB(&quot;mqtt&quot;)
+//insert data
+def dataDB=DB.getCollection(&quot;mqtt_user&quot;).insert([&quot;username&quot; : &quot;test&quot;, &quot;password_hash&quot; : &quot;test&quot;, &quot;is_superuser&quot; : false, &quot;salt&quot;: &quot;&quot;])
+String ReData=dataDB
+
+SampleResult.setResponseData(ReData)</stringProp>
+          <stringProp name="TestPlan.comments">disable account password connection</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /authentication" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;mongo_type&quot;: &quot;single&quot;,&#xd;
+    &quot;server&quot;: &quot;${mongodb_ip}:27017&quot;,&#xd;
+    &quot;srv_record&quot;: false,&#xd;
+    &quot;database&quot;: &quot;mqtt&quot;,&#xd;
+    &quot;collection&quot;: &quot;mqtt_user&quot;,&#xd;
+    &quot;selector&quot;: {&#xd;
+        &quot;username&quot;: &quot;${username}&quot;&#xd;
+    },&#xd;
+    &quot;password_hash_field&quot;: &quot;password_hash&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+    &quot;pool_size&quot;: 1,&#xd;
+    &quot;ssl&quot;: {&#xd;
+        &quot;enable&quot;: false&#xd;
+    },&#xd;
+    &quot;topology&quot;: {&#xd;
+        &quot;pool_size&quot;: 1,&#xd;
+        &quot;max_overflow&quot;: 8,&#xd;
+        &quot;overflow_ttl&quot;: &quot;1000ms&quot;,&#xd;
+        &quot;overflow_check_period&quot;: &quot;1000ms&quot;,&#xd;
+        &quot;local_threshold_ms&quot;: &quot;1000ms&quot;,&#xd;
+        &quot;socket_timeout_ms&quot;: &quot;100ms&quot;,&#xd;
+        &quot;connect_timeout_ms&quot;: &quot;5000ms&quot;,&#xd;
+        &quot;server_selection_timeout_ms&quot;: &quot;3000ms&quot;,&#xd;
+        &quot;wait_queue_timeout_ms&quot;: &quot;1000ms&quot;,&#xd;
+        &quot;heartbeat_frequency_ms&quot;: &quot;10000ms&quot;,&#xd;
+        &quot;min_heartbeat_frequency_ms&quot;: &quot;1000ms&quot;&#xd;
+    },&#xd;
+    &quot;backend&quot;: &quot;mongodb&quot;,&#xd;
+    &quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">18083</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /authentication" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">mongodb_id</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">err_mongodb</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /authentication/${mongodb_id}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion id" enabled="true">
+            <stringProp name="JSON_PATH">$..backend</stringProp>
+            <stringProp name="EXPECTED_VALUE">password-based:mysql</stringProp>
+            <boolProp name="JSONVALIDATION">false</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">true</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+          <stringProp name="mqtt.server">127.0.0.1</stringProp>
+          <stringProp name="mqtt.port">1883</stringProp>
+          <stringProp name="mqtt.version">3.1</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.protocol">TCP</stringProp>
+          <stringProp name="mqtt.ws_path"></stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.user_name">test</stringProp>
+          <stringProp name="mqtt.password">test</stringProp>
+          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_clean_session">true</stringProp>
+        </net.xmeter.samplers.ConnectSampler>
+        <hashTree/>
+        <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+        <hashTree/>
+        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+          <stringProp name="mqtt.server">127.0.0.1</stringProp>
+          <stringProp name="mqtt.port">1883</stringProp>
+          <stringProp name="mqtt.version">3.1</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.protocol">TCP</stringProp>
+          <stringProp name="mqtt.ws_path"></stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.user_name">test_err</stringProp>
+          <stringProp name="mqtt.password">test_err</stringProp>
+          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          <stringProp name="TestPlan.comments">err_name</stringProp>
+        </net.xmeter.samplers.ConnectSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="52471">502</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /authentication/${mongodb_id}/move" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;position&quot;: &quot;bottom&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}/move</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Code" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49590">204</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /authentication/${mongodb_id}/move" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;position&quot;: &quot;top&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}/move</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Code" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49590">204</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Close MongDB Authn --enable=false " enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mongodb_id}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;backend&quot;: &quot;mongodb&quot;,&#xd;
+	&quot;collection&quot;: &quot;mqtt_user&quot;,&#xd;
+	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
+	&quot;enable&quot;: false,&#xd;
+	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mongo_type&quot;: &quot;single&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+	&quot;password_hash_field&quot;: &quot;password_hash&quot;,&#xd;
+	&quot;pool_size&quot;: 1,&#xd;
+	&quot;selector&quot;: {&#xd;
+		&quot;username&quot;: &quot;${username}&quot;&#xd;
+	},&#xd;
+	&quot;server&quot;: &quot;${mongodb_ip}:27017&quot;,&#xd;
+	&quot;srv_record&quot;: false,&#xd;
+	&quot;ssl&quot;: {&#xd;
+		&quot;ciphers&quot;: [&quot;TLS_AES_256_GCM_SHA384&quot;, &quot;TLS_AES_128_GCM_SHA256&quot;, &quot;TLS_CHACHA20_POLY1305_SHA256&quot;, &quot;TLS_AES_128_CCM_SHA256&quot;, &quot;TLS_AES_128_CCM_8_SHA256&quot;, &quot;ECDHE-ECDSA-AES256-GCM-SHA384&quot;, &quot;ECDHE-RSA-AES256-GCM-SHA384&quot;, &quot;ECDHE-ECDSA-AES256-SHA384&quot;, &quot;ECDHE-RSA-AES256-SHA384&quot;, &quot;ECDH-ECDSA-AES256-GCM-SHA384&quot;, &quot;ECDH-RSA-AES256-GCM-SHA384&quot;, &quot;ECDH-ECDSA-AES256-SHA384&quot;, &quot;ECDH-RSA-AES256-SHA384&quot;, &quot;DHE-DSS-AES256-GCM-SHA384&quot;, &quot;DHE-DSS-AES256-SHA256&quot;, &quot;AES256-GCM-SHA384&quot;, &quot;AES256-SHA256&quot;, &quot;ECDHE-ECDSA-AES128-GCM-SHA256&quot;, &quot;ECDHE-RSA-AES128-GCM-SHA256&quot;, &quot;ECDHE-ECDSA-AES128-SHA256&quot;, &quot;ECDHE-RSA-AES128-SHA256&quot;, &quot;ECDH-ECDSA-AES128-GCM-SHA256&quot;, &quot;ECDH-RSA-AES128-GCM-SHA256&quot;, &quot;ECDH-ECDSA-AES128-SHA256&quot;, &quot;ECDH-RSA-AES128-SHA256&quot;, &quot;DHE-DSS-AES128-GCM-SHA256&quot;, &quot;DHE-DSS-AES128-SHA256&quot;, &quot;AES128-GCM-SHA256&quot;, &quot;AES128-SHA256&quot;, &quot;ECDHE-ECDSA-AES256-SHA&quot;, &quot;ECDHE-RSA-AES256-SHA&quot;, &quot;DHE-DSS-AES256-SHA&quot;, &quot;ECDH-ECDSA-AES256-SHA&quot;, &quot;ECDH-RSA-AES256-SHA&quot;, &quot;ECDHE-ECDSA-AES128-SHA&quot;, &quot;ECDHE-RSA-AES128-SHA&quot;, &quot;DHE-DSS-AES128-SHA&quot;, &quot;ECDH-ECDSA-AES128-SHA&quot;, &quot;ECDH-RSA-AES128-SHA&quot;, &quot;RSA-PSK-AES256-GCM-SHA384&quot;, &quot;RSA-PSK-AES256-CBC-SHA384&quot;, &quot;RSA-PSK-AES128-GCM-SHA256&quot;, &quot;RSA-PSK-AES128-CBC-SHA256&quot;, &quot;RSA-PSK-AES256-CBC-SHA&quot;, &quot;RSA-PSK-AES128-CBC-SHA&quot;],&#xd;
+		&quot;depth&quot;: 10,&#xd;
+		&quot;enable&quot;: false,&#xd;
+		&quot;reuse_sessions&quot;: true,&#xd;
+		&quot;secure_renegotiate&quot;: true,&#xd;
+		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
+		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
+		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
+	},&#xd;
+	&quot;topology&quot;: {&#xd;
+		&quot;connect_timeout_ms&quot;: &quot;5000ms&quot;,&#xd;
+		&quot;heartbeat_frequency_ms&quot;: &quot;10000ms&quot;,&#xd;
+		&quot;local_threshold_ms&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;max_overflow&quot;: 8,&#xd;
+		&quot;min_heartbeat_frequency_ms&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;overflow_check_period&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;overflow_ttl&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;pool_size&quot;: 1,&#xd;
+		&quot;server_selection_timeout_ms&quot;: &quot;3000ms&quot;,&#xd;
+		&quot;socket_timeout_ms&quot;: &quot;100ms&quot;,&#xd;
+		&quot;wait_queue_timeout_ms&quot;: &quot;1000ms&quot;&#xd;
+	}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+            <stringProp name="HTTPSampler.port">18083</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">&quot;enable&quot;:false</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings"/>
+              <stringProp name="TestPlan.comments">&quot;enable&quot;:false</stringProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path"></stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree/>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ReOpen MongDB Authn --enable=true" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mongodb_id}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;backend&quot;: &quot;mongodb&quot;,&#xd;
+	&quot;collection&quot;: &quot;mqtt_user&quot;,&#xd;
+	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
+	&quot;enable&quot;: true,&#xd;
+	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mongo_type&quot;: &quot;single&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+	&quot;password_hash_field&quot;: &quot;password_hash&quot;,&#xd;
+	&quot;pool_size&quot;: 1,&#xd;
+	&quot;selector&quot;: {&#xd;
+		&quot;username&quot;: &quot;${username}&quot;&#xd;
+	},&#xd;
+	&quot;server&quot;: &quot;${mongodb_ip}:27017&quot;,&#xd;
+	&quot;srv_record&quot;: false,&#xd;
+	&quot;ssl&quot;: {&#xd;
+		&quot;ciphers&quot;: [&quot;TLS_AES_256_GCM_SHA384&quot;, &quot;TLS_AES_128_GCM_SHA256&quot;, &quot;TLS_CHACHA20_POLY1305_SHA256&quot;, &quot;TLS_AES_128_CCM_SHA256&quot;, &quot;TLS_AES_128_CCM_8_SHA256&quot;, &quot;ECDHE-ECDSA-AES256-GCM-SHA384&quot;, &quot;ECDHE-RSA-AES256-GCM-SHA384&quot;, &quot;ECDHE-ECDSA-AES256-SHA384&quot;, &quot;ECDHE-RSA-AES256-SHA384&quot;, &quot;ECDH-ECDSA-AES256-GCM-SHA384&quot;, &quot;ECDH-RSA-AES256-GCM-SHA384&quot;, &quot;ECDH-ECDSA-AES256-SHA384&quot;, &quot;ECDH-RSA-AES256-SHA384&quot;, &quot;DHE-DSS-AES256-GCM-SHA384&quot;, &quot;DHE-DSS-AES256-SHA256&quot;, &quot;AES256-GCM-SHA384&quot;, &quot;AES256-SHA256&quot;, &quot;ECDHE-ECDSA-AES128-GCM-SHA256&quot;, &quot;ECDHE-RSA-AES128-GCM-SHA256&quot;, &quot;ECDHE-ECDSA-AES128-SHA256&quot;, &quot;ECDHE-RSA-AES128-SHA256&quot;, &quot;ECDH-ECDSA-AES128-GCM-SHA256&quot;, &quot;ECDH-RSA-AES128-GCM-SHA256&quot;, &quot;ECDH-ECDSA-AES128-SHA256&quot;, &quot;ECDH-RSA-AES128-SHA256&quot;, &quot;DHE-DSS-AES128-GCM-SHA256&quot;, &quot;DHE-DSS-AES128-SHA256&quot;, &quot;AES128-GCM-SHA256&quot;, &quot;AES128-SHA256&quot;, &quot;ECDHE-ECDSA-AES256-SHA&quot;, &quot;ECDHE-RSA-AES256-SHA&quot;, &quot;DHE-DSS-AES256-SHA&quot;, &quot;ECDH-ECDSA-AES256-SHA&quot;, &quot;ECDH-RSA-AES256-SHA&quot;, &quot;ECDHE-ECDSA-AES128-SHA&quot;, &quot;ECDHE-RSA-AES128-SHA&quot;, &quot;DHE-DSS-AES128-SHA&quot;, &quot;ECDH-ECDSA-AES128-SHA&quot;, &quot;ECDH-RSA-AES128-SHA&quot;, &quot;RSA-PSK-AES256-GCM-SHA384&quot;, &quot;RSA-PSK-AES256-CBC-SHA384&quot;, &quot;RSA-PSK-AES128-GCM-SHA256&quot;, &quot;RSA-PSK-AES128-CBC-SHA256&quot;, &quot;RSA-PSK-AES256-CBC-SHA&quot;, &quot;RSA-PSK-AES128-CBC-SHA&quot;],&#xd;
+		&quot;depth&quot;: 10,&#xd;
+		&quot;enable&quot;: false,&#xd;
+		&quot;reuse_sessions&quot;: true,&#xd;
+		&quot;secure_renegotiate&quot;: true,&#xd;
+		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
+		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
+		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
+	},&#xd;
+	&quot;topology&quot;: {&#xd;
+		&quot;connect_timeout_ms&quot;: &quot;5000ms&quot;,&#xd;
+		&quot;heartbeat_frequency_ms&quot;: &quot;10000ms&quot;,&#xd;
+		&quot;local_threshold_ms&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;max_overflow&quot;: 8,&#xd;
+		&quot;min_heartbeat_frequency_ms&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;overflow_check_period&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;overflow_ttl&quot;: &quot;1000ms&quot;,&#xd;
+		&quot;pool_size&quot;: 1,&#xd;
+		&quot;server_selection_timeout_ms&quot;: &quot;3000ms&quot;,&#xd;
+		&quot;socket_timeout_ms&quot;: &quot;100ms&quot;,&#xd;
+		&quot;wait_queue_timeout_ms&quot;: &quot;1000ms&quot;&#xd;
+	}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+            <stringProp name="HTTPSampler.port">18083</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">&quot;enable&quot;:true</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings"/>
+              <stringProp name="TestPlan.comments">&quot;enable&quot;:true</stringProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path"></stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree/>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path"></stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test_err</stringProp>
+            <stringProp name="mqtt.password">test_err</stringProp>
+            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+            <stringProp name="TestPlan.comments">err_name</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="52471">502</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE /authentication/${mongodb_id}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mongodb_id}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Code" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49590">204</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
