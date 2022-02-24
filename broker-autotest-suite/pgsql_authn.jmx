@@ -111,7 +111,7 @@
           </elementProp>
           <elementProp name="route" elementType="Argument">
             <stringProp name="Argument.name">route</stringProp>
-            <stringProp name="Argument.value">${__property(route,,/Users/Desktop/certs/pgsql)}</stringProp>
+            <stringProp name="Argument.value">${__property(route,,)}</stringProp>
             <stringProp name="Argument.desc">ssl certs doc route</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -639,7 +639,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
             <stringProp name="mqtt.clientcert_password"></stringProp>
-            <stringProp name="mqtt.user_name">${data_user}_err</stringProp>
+            <stringProp name="mqtt.user_name">${data_user}</stringProp>
             <stringProp name="mqtt.password">${data_pwd}_err</stringProp>
             <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
             <boolProp name="mqtt.client_id_suffix">true</boolProp>
@@ -660,34 +660,16 @@ vars.put(&quot;client_cert&quot;,client_cert);
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
-            <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-            <stringProp name="mqtt.port">1883</stringProp>
-            <stringProp name="mqtt.version">3.1</stringProp>
-            <stringProp name="mqtt.conn_timeout">10</stringProp>
-            <stringProp name="mqtt.protocol">TCP</stringProp>
-            <stringProp name="mqtt.ws_path"></stringProp>
-            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
-            <stringProp name="mqtt.clientcert_file_path"></stringProp>
-            <stringProp name="mqtt.clientcert_password"></stringProp>
-            <stringProp name="mqtt.user_name">${data_user}_err</stringProp>
-            <stringProp name="mqtt.password">${data_pwd}_err</stringProp>
-            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
-            <boolProp name="mqtt.client_id_suffix">true</boolProp>
-            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
-            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
-            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
-            <stringProp name="mqtt.conn_clean_session">true</stringProp>
-          </net.xmeter.samplers.ConnectSampler>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="52471">502</stringProp>
+                <stringProp name="49586">200</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -859,7 +841,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
             <stringProp name="mqtt.clientcert_password"></stringProp>
-            <stringProp name="mqtt.user_name">${data_user}_err</stringProp>
+            <stringProp name="mqtt.user_name">${data_user}</stringProp>
             <stringProp name="mqtt.password">${data_pwd}_err</stringProp>
             <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
             <boolProp name="mqtt.client_id_suffix">true</boolProp>
@@ -877,6 +859,19 @@ vars.put(&quot;client_cert&quot;,client_cert);
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1048,7 +1043,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
             <stringProp name="mqtt.clientcert_password"></stringProp>
-            <stringProp name="mqtt.user_name">${data_user}_err</stringProp>
+            <stringProp name="mqtt.user_name">${data_user}</stringProp>
             <stringProp name="mqtt.password">${data_pwd}_err</stringProp>
             <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
             <boolProp name="mqtt.client_id_suffix">true</boolProp>
@@ -1066,6 +1061,19 @@ vars.put(&quot;client_cert&quot;,client_cert);
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1237,7 +1245,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
             <stringProp name="mqtt.clientcert_password"></stringProp>
-            <stringProp name="mqtt.user_name">${data_user}_err</stringProp>
+            <stringProp name="mqtt.user_name">${data_user}</stringProp>
             <stringProp name="mqtt.password">${data_pwd}_err</stringProp>
             <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
             <boolProp name="mqtt.client_id_suffix">true</boolProp>
@@ -1255,6 +1263,19 @@ vars.put(&quot;client_cert&quot;,client_cert);
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
