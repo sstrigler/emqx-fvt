@@ -107,10 +107,6 @@
               <stringProp name="Header.name">content-type</stringProp>
               <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
             </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name"></stringProp>
-              <stringProp name="Header.value"></stringProp>
-            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -121,7 +117,7 @@
           <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
           <stringProp name="HTTPSampler.port">18083</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
@@ -131,7 +127,7 @@
         <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
           <collectionProp name="AuthManager.auth_list">
             <elementProp name="" elementType="Authorization">
-              <stringProp name="Authorization.url">http://${emqx_ip}:18083</stringProp>
+              <stringProp name="Authorization.url">http://${emqx_ip}</stringProp>
               <stringProp name="Authorization.username">${emqx_user}</stringProp>
               <stringProp name="Authorization.password">${emqx_pwd}</stringProp>
               <stringProp name="Authorization.domain"></stringProp>
@@ -143,7 +139,7 @@
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="control --loop info enable&amp;disable" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">5</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Disable Delayed Publish" enabled="true">
