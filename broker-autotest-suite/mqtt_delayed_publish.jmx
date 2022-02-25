@@ -139,7 +139,7 @@
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="control --loop info enable&amp;disable" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">5</stringProp>
         </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Disable Delayed Publish" enabled="true">
