@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="port" elementType="Argument">
             <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">${__property(port,,5434)}</stringProp>
+            <stringProp name="Argument.value">${__property(port,,5432)}</stringProp>
             <stringProp name="Argument.desc">pgsql db port</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -117,17 +117,17 @@
           </elementProp>
           <elementProp name="ca_name" elementType="Argument">
             <stringProp name="Argument.name">ca_name</stringProp>
-            <stringProp name="Argument.value">${__property(ca_name,,ca.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(ca_name,,ca.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="key_name" elementType="Argument">
             <stringProp name="Argument.name">key_name</stringProp>
-            <stringProp name="Argument.value">${__property(key_name,,client-key.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(key_name,,client.key)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cert_name" elementType="Argument">
             <stringProp name="Argument.name">cert_name</stringProp>
-            <stringProp name="Argument.value">${__property(cert_name,,client-cert.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(cert_name,,client.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -651,17 +651,28 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="52471">502</stringProp>
+                <stringProp name="-1281977283">failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-          <hashTree/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1529936557">Connection not found</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="sha256 auth check" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -842,17 +853,28 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="52471">502</stringProp>
+                <stringProp name="-1281977283">failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-          <hashTree/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1529936557">Connection not found</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="salt+sha256 auth check" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -1033,17 +1055,28 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="52471">502</stringProp>
+                <stringProp name="-1281977283">failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-          <hashTree/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1529936557">Connection not found</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="sha256+salt auth check" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -1224,17 +1257,28 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="52471">502</stringProp>
+                <stringProp name="-1281977283">failed</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-          <hashTree/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1529936557">Connection not found</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
       </hashTree>
       <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="true">
