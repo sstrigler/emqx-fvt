@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="port" elementType="Argument">
             <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">${__property(port,,5434)}</stringProp>
+            <stringProp name="Argument.value">${__property(port,,5432)}</stringProp>
             <stringProp name="Argument.desc">pgsql db port</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -87,23 +87,23 @@
           </elementProp>
           <elementProp name="route" elementType="Argument">
             <stringProp name="Argument.name">route</stringProp>
-            <stringProp name="Argument.value">${__property(route,,l)}</stringProp>
+            <stringProp name="Argument.value">${__property(route,,)}</stringProp>
             <stringProp name="Argument.desc">ssl certs doc route</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ca_name" elementType="Argument">
             <stringProp name="Argument.name">ca_name</stringProp>
-            <stringProp name="Argument.value">${__property(ca_name,,ca.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(ca_name,,ca.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="key_name" elementType="Argument">
             <stringProp name="Argument.name">key_name</stringProp>
-            <stringProp name="Argument.value">${__property(key_name,,client-key.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(key_name,,client.key)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cert_name" elementType="Argument">
             <stringProp name="Argument.name">cert_name</stringProp>
-            <stringProp name="Argument.value">${__property(cert_name,,client-cert.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(cert_name,,client.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -273,15 +273,18 @@ vars.put(&quot;client_cert&quot;,client_cert);
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Create Table &quot;mqtt_acl&quot;" enabled="true">
           <stringProp name="dataSource">pgsql</stringProp>
           <stringProp name="queryType">Update Statement</stringProp>
-          <stringProp name="query">        CREATE TABLE mqtt_acl (
-          id SERIAL PRIMARY KEY,
-          ipaddress CHARACTER VARYING(60) NOT NULL DEFAULT &apos;&apos;,
-          username CHARACTER VARYING(255) NOT NULL DEFAULT &apos;&apos;,
-          clientid CHARACTER VARYING(255) NOT NULL DEFAULT &apos;&apos;,
-          action ACTION,
-          permission PERMISSION,
-          topic CHARACTER VARYING(255) NOT NULL
-        );</stringProp>
+          <stringProp name="query">CREATE TYPE ACTION AS ENUM(&apos;publish&apos;,&apos;subscribe&apos;,&apos;all&apos;);
+CREATE TYPE PERMISSION AS ENUM(&apos;allow&apos;,&apos;deny&apos;);
+
+CREATE TABLE mqtt_acl (
+   id SERIAL PRIMARY KEY,
+   ipaddress CHARACTER VARYING(60) NOT NULL DEFAULT &apos;&apos;,
+   username CHARACTER VARYING(255) NOT NULL DEFAULT &apos;&apos;,
+   clientid CHARACTER VARYING(255) NOT NULL DEFAULT &apos;&apos;,
+   action ACTION,
+   permission PERMISSION,
+   topic CHARACTER VARYING(255) NOT NULL
+   );</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="variableNames"></stringProp>
@@ -393,6 +396,32 @@ vars.put(&quot;client_cert&quot;,client_cert);
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --&quot;no_match&quot; as allow&amp;&quot;cache&quot; as false" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:false,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;allow&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authorization/settings</stringProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="empty acl check" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -449,7 +478,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1823,7 +1852,9 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         </hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Drop ACL Table" enabled="true">
           <stringProp name="dataSource">pgsql</stringProp>
-          <stringProp name="query">drop table mqtt_acl;</stringProp>
+          <stringProp name="query">drop table mqtt_acl;
+drop type PERMISSION;
+drop type ACTION;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
