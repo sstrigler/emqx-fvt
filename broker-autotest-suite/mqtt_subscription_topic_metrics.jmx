@@ -87,7 +87,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Data Persist Through Webhook" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Subscription Test" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -220,10 +220,10 @@
           </hashTree>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
             <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-            <stringProp name="mqtt.port">8083</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
             <stringProp name="mqtt.version">3.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
-            <stringProp name="mqtt.protocol">WS</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
             <stringProp name="mqtt.ws_path">/mqtt</stringProp>
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
@@ -478,10 +478,10 @@
           </hashTree>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
             <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-            <stringProp name="mqtt.port">8083</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
             <stringProp name="mqtt.version">3.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
-            <stringProp name="mqtt.protocol">WS</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
             <stringProp name="mqtt.ws_path">/mqtt</stringProp>
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
@@ -697,10 +697,10 @@
         <hashTree>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
             <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-            <stringProp name="mqtt.port">8083</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
             <stringProp name="mqtt.version">3.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
-            <stringProp name="mqtt.protocol">WS</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
             <stringProp name="mqtt.ws_path">/mqtt</stringProp>
             <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
             <stringProp name="mqtt.clientcert_file_path"></stringProp>
@@ -959,10 +959,10 @@
           <hashTree>
             <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
               <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-              <stringProp name="mqtt.port">8083</stringProp>
+              <stringProp name="mqtt.port">1883</stringProp>
               <stringProp name="mqtt.version">3.1</stringProp>
               <stringProp name="mqtt.conn_timeout">10</stringProp>
-              <stringProp name="mqtt.protocol">WS</stringProp>
+              <stringProp name="mqtt.protocol">TCP</stringProp>
               <stringProp name="mqtt.ws_path">/mqtt</stringProp>
               <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
               <stringProp name="mqtt.clientcert_file_path"></stringProp>
@@ -1020,10 +1020,10 @@
             <hashTree/>
             <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
               <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-              <stringProp name="mqtt.port">8083</stringProp>
+              <stringProp name="mqtt.port">1883</stringProp>
               <stringProp name="mqtt.version">3.1</stringProp>
               <stringProp name="mqtt.conn_timeout">10</stringProp>
-              <stringProp name="mqtt.protocol">WS</stringProp>
+              <stringProp name="mqtt.protocol">TCP</stringProp>
               <stringProp name="mqtt.ws_path">/mqtt</stringProp>
               <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
               <stringProp name="mqtt.clientcert_file_path"></stringProp>
@@ -1081,10 +1081,10 @@
             <hashTree/>
             <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
               <stringProp name="mqtt.server">${emqx_ip}</stringProp>
-              <stringProp name="mqtt.port">8083</stringProp>
+              <stringProp name="mqtt.port">1883</stringProp>
               <stringProp name="mqtt.version">3.1</stringProp>
               <stringProp name="mqtt.conn_timeout">10</stringProp>
-              <stringProp name="mqtt.protocol">WS</stringProp>
+              <stringProp name="mqtt.protocol">TCP</stringProp>
               <stringProp name="mqtt.ws_path">/mqtt</stringProp>
               <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
               <stringProp name="mqtt.clientcert_file_path"></stringProp>
