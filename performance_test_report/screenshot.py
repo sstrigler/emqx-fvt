@@ -42,6 +42,12 @@ console_file.setFormatter(formatter)
 logger.addHandler(console_file)
 
 
+logger.info(root_path)
+logger.info(project_path)
+logger.info(image_file_path)
+logger.info(log_path)
+
+
 def firefox_driver():
     """ Firefox """
     options = webdriver.FirefoxOptions()
