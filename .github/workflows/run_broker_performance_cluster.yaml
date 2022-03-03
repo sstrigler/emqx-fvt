@@ -448,6 +448,43 @@ jobs:
       run: |
         terraform destroy -auto-approve -var="db_password=public123" -var="access_key=${{ secrets.AWS_ACCESS_KEY_ID_FOR_PERFORMANCE_TESTING }}" -var="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY_FOR_PERFORMANCE_TESTING }}"
 
+  Performance_test_report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: emqx/emqx-fvt
+          ref: screenshot_test
+          path: emqx-fvt
+      - uses: actions/download-artifact@v2
+        with:
+          name: jmeter_logs_report
+          path: ./emqx-fvt/performance_test_report/
+      - name: mv report.txt
+        working-directory: ./emqx-fvt/performance_test_report
+        run: mv ./jmeter_logs/report.txt ../
+      - name: install webdriver
+        working-directory: ./emqx-fvt
+        run: |
+          mkdir performance_test_report/webdriver
+          cd performance_test_report/webdriver
+          wget --no-verbose -O "./geckodriver-v0.30.0-linux64.tar.gz" https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
+          tar -zxvf ./geckodriver-v0.30.0-linux64.tar.gz
+          mv ./geckodriver ../
+      - name: install python package
+        run: |
+          pip3 install selenium==3.141.0
+          pip3 install requests==2.26.0
+          pip install --upgrade urllib3==1.26.7
+      - name: run screenshot
+        working-directory: ./emqx-fvt/performance_test_report
+        run: |
+          python3 ./screenshot.py
+      - uses: actions/upload-artifact@v2
+        with:
+          name: screenshot
+          path: ./emqx-fvt/performance_test_report/data/image/*
+
   xmeter_stop:
     runs-on: ubuntu-latest
 

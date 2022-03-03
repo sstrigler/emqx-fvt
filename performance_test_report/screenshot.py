@@ -18,9 +18,7 @@ import urllib3
 urllib3.disable_warnings()
 
 root_path = os.path.dirname(os.path.dirname(__file__))
-# project_path = os.path.join(root_path, 'performance_test_report')
 project_path = "./"
-# image_file_path = os.path.join(project_path, 'data/image')
 image_file_path = "./data/image"
 if not os.path.exists(image_file_path):
     os.makedirs(image_file_path)
@@ -34,7 +32,6 @@ console.setLevel(level=level)
 console.setFormatter(formatter)
 logger.addHandler(console)
 
-# log_path = os.path.join(project_path, 'data/log')
 log_path = "./data/log"
 if not os.path.exists(log_path):
     os.makedirs(log_path)
@@ -219,8 +216,6 @@ def demo(report_log):
 
 
 if __name__ == '__main__':
-    report_file = os.path.join(project_path, 'report.txt')
-    logger.info(report_file)
     with open("./report.txt", 'r') as r:
         params = r.readline()
         logger.info(params)
