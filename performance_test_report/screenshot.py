@@ -211,7 +211,8 @@ def demo(report_log):
 
 if __name__ == '__main__':
     report_file = os.path.join(project_path, 'report.txt')
-    with open(report_file, 'r') as r:
+    logger.info(report_file)
+    with open("./report_file", 'r') as r:
         params = r.readline()
         logger.info(params)
         demo(report_log=params)
