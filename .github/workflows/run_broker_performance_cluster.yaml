@@ -465,6 +465,3 @@ jobs:
         aws ec2 stop-instances --instance-ids i-05222103df01eb2d7
         aws ec2 stop-instances --instance-ids i-0c5dccd394ed9be18
         aws ec2 stop-instances --instance-ids i-04c1c50b3e4952266
-
-
-
