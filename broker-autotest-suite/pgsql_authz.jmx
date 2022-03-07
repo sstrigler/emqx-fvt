@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="port" elementType="Argument">
             <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">${__property(port,,5432)}</stringProp>
+            <stringProp name="Argument.value">${__property(port,,5433)}</stringProp>
             <stringProp name="Argument.desc">pgsql db port</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -395,8 +395,12 @@ CREATE TABLE mqtt_acl (
             <intProp name="Assertion.test_type">16</intProp>
           </ResponseAssertion>
           <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --&quot;no_match&quot; as allow&amp;&quot;cache&quot; as false" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --&quot;cache&quot; as false" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -420,8 +424,14 @@ CREATE TABLE mqtt_acl (
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">&quot;no_match&quot;:&quot;deny&quot;</stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="empty acl check" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -504,7 +514,7 @@ CREATE TABLE mqtt_acl (
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Rule" enabled="true">
             <stringProp name="TestPlan.comments">deny specific ip sub/pub</stringProp>
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;172.100.239.1&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;115.236.21.86&apos;, &apos;&apos;, &apos;&apos;, &apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -538,7 +548,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="Deny IP sub/pub --connect" enabled="true">
             <stringProp name="mqtt.server">${emqx_ip}</stringProp>
             <stringProp name="mqtt.port">1883</stringProp>
-            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.version">3.1.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
             <stringProp name="mqtt.protocol">TCP</stringProp>
             <stringProp name="mqtt.ws_path">/mqtt</stringProp>
@@ -556,7 +566,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </net.xmeter.samplers.ConnectSampler>
           <hashTree>
             <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="constant timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">5000</stringProp>
+              <stringProp name="ConstantTimer.delay">2000</stringProp>
             </ConstantTimer>
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
@@ -641,7 +651,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Data" enabled="true">
             <stringProp name="TestPlan.comments">deny user sub/pub</stringProp>
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;${data_user}&apos;, &apos;&apos;,&apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;${data_user}&apos;, &apos;&apos;, &apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -764,7 +774,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Data" enabled="true">
             <stringProp name="TestPlan.comments">deny clientid sub/pub</stringProp>
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;,&apos;${client_id}_1&apos;, &apos;all&apos;,&apos;deny&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;, &apos;${client_id}_1&apos;, &apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -881,7 +891,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </hashTree>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --&quot;no_match&quot; as deny" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
@@ -891,6 +900,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -1012,7 +1022,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Data" enabled="true">
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;172.100.239.1&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;172.100.239.1&apos;, &apos;&apos;, &apos;&apos;, &apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -1143,7 +1153,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Rule" enabled="true">
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;${data_user}&apos;, &apos;&apos;,&apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;${data_user}&apos;, &apos;&apos;, &apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -1265,7 +1275,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Rule" enabled="true">
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;,&apos;${client_id}_1&apos;, &apos;all&apos;,&apos;allow&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;, &apos;${client_id}_1&apos;, &apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -1289,7 +1299,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Rule" enabled="true">
             <stringProp name="dataSource">pgsql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;,&apos;${client_id}_2&apos;, &apos;all&apos;,&apos;allow&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;&apos;, &apos;&apos;, &apos;${client_id}_2&apos;, &apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
