@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="port" elementType="Argument">
             <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">${__property(port,,5432)}</stringProp>
+            <stringProp name="Argument.value">${__property(port,,5433)}</stringProp>
             <stringProp name="Argument.desc">pgsql db port</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -275,7 +275,6 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <stringProp name="queryType">Update Statement</stringProp>
           <stringProp name="query">CREATE TYPE ACTION AS ENUM(&apos;publish&apos;,&apos;subscribe&apos;,&apos;all&apos;);
 CREATE TYPE PERMISSION AS ENUM(&apos;allow&apos;,&apos;deny&apos;);
-
 CREATE TABLE mqtt_acl (
    id SERIAL PRIMARY KEY,
    ipaddress CHARACTER VARYING(60) NOT NULL DEFAULT &apos;&apos;,
@@ -364,8 +363,7 @@ CREATE TABLE mqtt_acl (
 	},&#xd;
 	&quot;query&quot;: &quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username} or ipaddress = ${peerhost} or clientid = ${clientid}&quot;,&#xd;
 	&quot;type&quot;: &quot;postgresql&quot;&#xd;
-}&#xd;
-</stringProp>
+}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -402,7 +400,7 @@ CREATE TABLE mqtt_acl (
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:false,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:false,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;allow&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -886,7 +884,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:false,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;allow&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;cache&quot;:{&quot;enable&quot;:false,&quot;max_size&quot;:32,&quot;ttl&quot;:&quot;1m&quot;},&quot;deny_action&quot;:&quot;ignore&quot;,&quot;no_match&quot;:&quot;deny&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -1731,7 +1729,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         </hashTree>
         <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="1259833018">Successful</stringProp>
             </collectionProp>
