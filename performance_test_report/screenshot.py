@@ -216,7 +216,10 @@ def demo(report_log):
 
 
 if __name__ == '__main__':
-    with open("./report.txt", 'r') as r:
-        params = r.readline()
-        logger.info(params)
-        demo(report_log=params)
+    with open("./report.txt", "r") as rc:
+        for params in rc.readlines():
+            logger.info(params)
+            demo(report_log=params)
+    # for line in open("./report.txt", "r"):
+    #     logger.info(line)
+    #     demo(report_log=line)
