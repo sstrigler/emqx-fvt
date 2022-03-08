@@ -347,23 +347,7 @@ CREATE TABLE mqtt_acl (
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-	&quot;server&quot;: &quot;${pgsql_ip}:${port}&quot;,&#xd;
-	&quot;username&quot;: &quot;${pgsql_user}&quot;,&#xd;
-	&quot;password&quot;: &quot;${pgsql_pwd}&quot;,&#xd;
-	&quot;database&quot;: &quot;${dbname}&quot;,&#xd;
-	&quot;pool_size&quot;: 8,&#xd;
-	&quot;auto_reconnect&quot;: true,&#xd;
-	&quot;ssl&quot;: {&#xd;
-		&quot;enable&quot;: true,&#xd;
-		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
-		&quot;certfile&quot;: &quot;${client_cert}&quot;,&#xd;
-          &quot;keyfile&quot;: &quot;${client_key}&quot;,&#xd;
-          &quot;cacertfile&quot;: &quot;${ca}&quot;&#xd;
-	},&#xd;
-	&quot;query&quot;: &quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username} or ipaddress = ${peerhost} or clientid = ${clientid}&quot;,&#xd;
-	&quot;type&quot;: &quot;postgresql&quot;&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">{&quot;server&quot;:&quot;${pgsql_ip}:${port}&quot;,&quot;username&quot;:&quot;${pgsql_user}&quot;,&quot;password&quot;:&quot;${pgsql_pwd}&quot;,&quot;database&quot;:&quot;${dbname}&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:true,&quot;verify&quot;:&quot;verify_none&quot;,&quot;certfile&quot;:&quot;${client_cert}&quot;,&quot;keyfile&quot;:&quot;${client_key}&quot;,&quot;cacertfile&quot;:&quot;${ca}&quot;},&quot;query&quot;:&quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username} or ipaddress = ${peerhost} or clientid = ${clientid}&quot;,&quot;type&quot;:&quot;postgresql&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -394,7 +378,7 @@ CREATE TABLE mqtt_acl (
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --&quot;no_match&quot; as allow&amp;&quot;cache&quot; as false" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Set Settings --cache as false" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -419,7 +403,12 @@ CREATE TABLE mqtt_acl (
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="empty acl check" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
@@ -1729,7 +1718,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         </hashTree>
         <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="1259833018">Successful</stringProp>
             </collectionProp>
