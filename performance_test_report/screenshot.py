@@ -53,6 +53,7 @@ def firefox_driver():
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
+    options.add_argument("--lang=en")
     options.add_argument('ignore-certificate-errors')
 
     driver = webdriver.Firefox(executable_path='./geckodriver',
