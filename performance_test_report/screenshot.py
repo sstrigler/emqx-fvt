@@ -53,7 +53,6 @@ def firefox_driver():
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
-    options.add_argument("--lang=en")
     options.add_argument('ignore-certificate-errors')
 
     driver = webdriver.Firefox(executable_path='./geckodriver',
@@ -132,7 +131,7 @@ def demo(report_log):
         """ Get test report details """
         header = {
             'Connection': 'keep-alive',
-            'Accept-Language': 'zh-CN',
+            'Accept-Language': 'en-US',
             'host': '13.251.133.132',
             'ontent-Type': 'application/json; charset=utf-8',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
