@@ -711,7 +711,7 @@
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
-            <stringProp name="mqtt.topic_name">$delayed/10/${test_topic}/1</stringProp>
+            <stringProp name="mqtt.topic_name">$delayed/5/${test_topic}/1</stringProp>
             <stringProp name="mqtt.qos_level">0</stringProp>
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <stringProp name="mqtt.message_type">String</stringProp>
@@ -809,6 +809,10 @@
               <boolProp name="Assertion.assume_success">false</boolProp>
               <intProp name="Assertion.test_type">16</intProp>
             </ResponseAssertion>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">2000</stringProp>
+            </ConstantTimer>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Check Limit" enabled="true">

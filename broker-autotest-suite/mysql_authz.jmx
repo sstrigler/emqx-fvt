@@ -21,19 +21,19 @@
           </elementProp>
           <elementProp name="mysql_ip" elementType="Argument">
             <stringProp name="Argument.name">mysql_ip</stringProp>
-            <stringProp name="Argument.value">${__property(mysql_ip,,)}</stringProp>
+            <stringProp name="Argument.value">${__property(mysql_ip,,127.0.0.1)}</stringProp>
             <stringProp name="Argument.desc">mysql server ip</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="port" elementType="Argument">
             <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">${__property(port,,3306)}</stringProp>
+            <stringProp name="Argument.value">${__property(port,,3307)}</stringProp>
             <stringProp name="Argument.desc">mysql db port</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="mysql_user" elementType="Argument">
             <stringProp name="Argument.name">mysql_user</stringProp>
-            <stringProp name="Argument.value">${__property(mysql_user,,ssluser)}</stringProp>
+            <stringProp name="Argument.value">${__property(mysql_user,,root)}</stringProp>
             <stringProp name="Argument.desc">mysql user</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -51,7 +51,7 @@
           </elementProp>
           <elementProp name="emqx_ip" elementType="Argument">
             <stringProp name="Argument.name">emqx_ip</stringProp>
-            <stringProp name="Argument.value">${__property(emqx_ip,,)}</stringProp>
+            <stringProp name="Argument.value">${__property(emqx_ip,,127.0.0.1)}</stringProp>
             <stringProp name="Argument.desc">emqx ip</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -93,17 +93,17 @@
           </elementProp>
           <elementProp name="ca_name" elementType="Argument">
             <stringProp name="Argument.name">ca_name</stringProp>
-            <stringProp name="Argument.value">${__property(ca_name,,ca.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(ca_name,,ca.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="key_name" elementType="Argument">
             <stringProp name="Argument.name">key_name</stringProp>
-            <stringProp name="Argument.value">${__property(key_name,,client-key.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(key_name,,client.key)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cert_name" elementType="Argument">
             <stringProp name="Argument.name">cert_name</stringProp>
-            <stringProp name="Argument.value">${__property(cert_name,,client-cert.pem)}</stringProp>
+            <stringProp name="Argument.value">${__property(cert_name,,client.crt)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -150,7 +150,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -321,16 +321,16 @@ vars.put(&quot;client_cert&quot;,client_cert);
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="0"></stringProp>
+              <stringProp name="49590">204</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add mysql Authz" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add Mysql Authz" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -352,8 +352,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 	},&#xd;
 	&quot;query&quot;: &quot;SELECT action, permission, topic FROM mqtt_acl where username = ${username} or ipaddress = ${peerhost} or clientid = ${clientid}&quot;,&#xd;
 	&quot;type&quot;: &quot;mysql&quot;&#xd;
-}&#xd;
-</stringProp>
+}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -380,7 +379,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -493,7 +492,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Rule" enabled="true">
             <stringProp name="TestPlan.comments">deny specific ip sub/pub</stringProp>
             <stringProp name="dataSource">mysql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;${emqx_ip}&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;172.100.239.1&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;deny&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -716,7 +715,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1001,7 +1000,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert ACL Data" enabled="true">
             <stringProp name="dataSource">mysql</stringProp>
-            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;${emqx_ip}&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
+            <stringProp name="query">INSERT INTO mqtt_acl (ipaddress, username, clientid, action, permission, topic) VALUES (&apos;172.100.239.1&apos;, &apos;&apos;, &apos;&apos;,&apos;all&apos;, &apos;allow&apos;, &apos;#&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -1782,7 +1781,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /authorization/sources" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Mysql authz " enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -1790,34 +1789,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authorization/sources</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">type_mysql</stringProp>
-            <stringProp name="JSONPostProcessor.jsonPathExprs">$..sources[0]..type</stringProp>
-            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            <stringProp name="JSONPostProcessor.defaultValues">err_tppe_mysql</stringProp>
-          </JSONPostProcessor>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Pgsql authz " enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authorization/sources/${type_mysql}</stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authorization/sources/mysql</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
