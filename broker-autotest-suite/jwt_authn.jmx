@@ -950,7 +950,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{},&quot;endpoint&quot;:&quot;http://127.0.0.1:8080/jwk&quot;,&quot;refresh_interval&quot;:&quot;300&quot;,&quot;mechanism&quot;:&quot;jwt&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{},&quot;endpoint&quot;:&quot;http://${jwks_ip}:8080/jwk&quot;,&quot;refresh_interval&quot;:&quot;300&quot;,&quot;mechanism&quot;:&quot;jwt&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -972,7 +972,7 @@
           <hashTree>
             <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
               <stringProp name="JSON_PATH">$.endpoint</stringProp>
-              <stringProp name="EXPECTED_VALUE">http://127.0.0.1:8080/jwk</stringProp>
+              <stringProp name="EXPECTED_VALUE">http://${jwks_ip}:8080/jwk</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
               <boolProp name="EXPECT_NULL">false</boolProp>
               <boolProp name="INVERT">false</boolProp>
@@ -992,7 +992,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;enable&quot;:false,&quot;endpoint&quot;:&quot;http://127.0.0.1:8080/jwk&quot;,&quot;mechanism&quot;:&quot;jwt&quot;,&quot;refresh_interval&quot;:300,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{}}</stringProp>
+                  <stringProp name="Argument.value">{&quot;enable&quot;:false,&quot;endpoint&quot;:&quot;http://${jwks_ip}:8080/jwk&quot;,&quot;mechanism&quot;:&quot;jwt&quot;,&quot;refresh_interval&quot;:300,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{}}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1042,7 +1042,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;enable&quot;:true,&quot;endpoint&quot;:&quot;http://127.0.0.1:8080/jwk&quot;,&quot;mechanism&quot;:&quot;jwt&quot;,&quot;refresh_interval&quot;:300,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{}}</stringProp>
+                  <stringProp name="Argument.value">{&quot;enable&quot;:true,&quot;endpoint&quot;:&quot;http://${jwks_ip}:8080/jwk&quot;,&quot;mechanism&quot;:&quot;jwt&quot;,&quot;refresh_interval&quot;:300,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;use_jwks&quot;:true,&quot;verify_claims&quot;:{}}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1113,7 +1113,7 @@
           <hashTree>
             <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
               <stringProp name="JSON_PATH">$.[0].endpoint</stringProp>
-              <stringProp name="EXPECTED_VALUE">http://127.0.0.1:8080/jwk</stringProp>
+              <stringProp name="EXPECTED_VALUE">http://${jwks_ip}:8080/jwk</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
               <boolProp name="EXPECT_NULL">false</boolProp>
               <boolProp name="INVERT">false</boolProp>
