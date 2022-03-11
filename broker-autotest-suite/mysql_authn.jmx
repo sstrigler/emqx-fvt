@@ -350,7 +350,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -444,7 +444,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -557,7 +557,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -814,7 +814,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;suffix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -1071,7 +1071,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -1328,7 +1328,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
 		&quot;salt_position&quot;: &quot;suffix&quot;&#xd;
 	},&#xd;
 	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -1589,7 +1589,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:mysql</stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:mysql</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

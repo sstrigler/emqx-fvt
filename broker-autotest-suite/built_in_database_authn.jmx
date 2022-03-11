@@ -151,7 +151,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;user_id_type&quot;:&quot;username&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;backend&quot;:&quot;built-in-database&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;user_id_type&quot;:&quot;username&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;backend&quot;:&quot;built_in_database&quot;,&quot;mechanism&quot;:&quot;password_based&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -174,7 +174,7 @@
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="1153084187">password-based:built-in-database</stringProp>
+              <stringProp name="-216494743">password_based:built_in_database</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -198,7 +198,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -231,7 +231,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built-in-database&quot;,&quot;enable&quot;:false,&quot;mechanism&quot;:&quot;password-based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;username&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built_in_database&quot;,&quot;enable&quot;:false,&quot;mechanism&quot;:&quot;password_based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;username&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -240,7 +240,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -319,7 +319,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built-in-database&quot;,&quot;enable&quot;:true,&quot;mechanism&quot;:&quot;password-based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;username&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built_in_database&quot;,&quot;enable&quot;:true,&quot;mechanism&quot;:&quot;password_based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;username&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -328,7 +328,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -447,7 +447,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -534,7 +534,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -608,7 +608,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -687,9 +687,9 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;backend&quot;: &quot;built-in-database&quot;,&#xd;
+	&quot;backend&quot;: &quot;built_in_database&quot;,&#xd;
 	&quot;enable&quot;: true,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;,&#xd;
 	&quot;password_hash_algorithm&quot;: {&#xd;
 		&quot;name&quot;: &quot;sha256&quot;,&#xd;
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
@@ -704,7 +704,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -741,7 +741,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -859,7 +859,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}1</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}1</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -938,9 +938,9 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;backend&quot;: &quot;built-in-database&quot;,&#xd;
+	&quot;backend&quot;: &quot;built_in_database&quot;,&#xd;
 	&quot;enable&quot;: true,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;,&#xd;
 	&quot;password_hash_algorithm&quot;: {&#xd;
 		&quot;name&quot;: &quot;sha256&quot;,&#xd;
 		&quot;salt_position&quot;: &quot;suffix&quot;&#xd;
@@ -955,7 +955,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -992,7 +992,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1110,7 +1110,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}2</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}2</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1185,7 +1185,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1213,7 +1213,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;user_id_type&quot;:&quot;clientid&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;backend&quot;:&quot;built-in-database&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;user_id_type&quot;:&quot;clientid&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;backend&quot;:&quot;built_in_database&quot;,&quot;mechanism&quot;:&quot;password_based&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -1236,7 +1236,7 @@
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="1153084187">password-based:built-in-database</stringProp>
+              <stringProp name="-216494743">password_based:built_in_database</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -1256,7 +1256,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built-in-database&quot;,&quot;enable&quot;:true,&quot;mechanism&quot;:&quot;password-based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;clientid&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;backend&quot;:&quot;built_in_database&quot;,&quot;enable&quot;:true,&quot;mechanism&quot;:&quot;password_based&quot;,&quot;password_hash_algorithm&quot;:{&quot;name&quot;:&quot;plain&quot;},&quot;user_id_type&quot;:&quot;clientid&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -1265,7 +1265,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1303,7 +1303,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1421,7 +1421,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1500,9 +1500,9 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;backend&quot;: &quot;built-in-database&quot;,&#xd;
+	&quot;backend&quot;: &quot;built_in_database&quot;,&#xd;
 	&quot;enable&quot;: true,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;,&#xd;
 	&quot;password_hash_algorithm&quot;: {&#xd;
 		&quot;name&quot;: &quot;sha256&quot;,&#xd;
 		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
@@ -1517,7 +1517,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1554,7 +1554,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1672,7 +1672,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}1</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}1</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1751,9 +1751,9 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;backend&quot;: &quot;built-in-database&quot;,&#xd;
+	&quot;backend&quot;: &quot;built_in_database&quot;,&#xd;
 	&quot;enable&quot;: true,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;mechanism&quot;: &quot;password_based&quot;,&#xd;
 	&quot;password_hash_algorithm&quot;: {&#xd;
 		&quot;name&quot;: &quot;sha256&quot;,&#xd;
 		&quot;salt_position&quot;: &quot;suffix&quot;&#xd;
@@ -1768,7 +1768,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1805,7 +1805,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1923,7 +1923,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database/users/${data_user}2</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database/users/${data_user}2</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1998,7 +1998,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/password-based:built-in-database</stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/authentication/password_based:built_in_database</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
