@@ -173,7 +173,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;0MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;config&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;max_read_number&quot;:0,&quot;msg_deliver_quota&quot;:0,&quot;quota_release_interval&quot;:&quot;0s&quot;},&quot;enable&quot;:false}</stringProp>
+                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;1MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;backend&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;batch_deliver_limiter&quot;:&quot;retainer&quot;,&quot;batch_deliver_number&quot;:0,&quot;batch_read_number&quot;:0},&quot;enable&quot;:false}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -210,7 +210,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;0MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;config&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;max_read_number&quot;:0,&quot;msg_deliver_quota&quot;:0,&quot;quota_release_interval&quot;:&quot;0s&quot;},&quot;enable&quot;:true}</stringProp>
+                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;1MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;backend&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;batch_deliver_limiter&quot;:&quot;retainer&quot;,&quot;batch_deliver_number&quot;:0,&quot;batch_read_number&quot;:0},&quot;enable&quot;:true}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -405,7 +405,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;0MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;config&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;max_read_number&quot;:0,&quot;msg_deliver_quota&quot;:0,&quot;quota_release_interval&quot;:&quot;0s&quot;},&quot;enable&quot;:true}</stringProp>
+                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;1MB&quot;,&quot;msg_clear_interval&quot;:&quot;0s&quot;,&quot;msg_expiry_interval&quot;:&quot;0s&quot;,&quot;backend&quot;:{&quot;max_retained_messages&quot;:0,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;batch_deliver_limiter&quot;:&quot;retainer&quot;,&quot;batch_deliver_number&quot;:0,&quot;batch_read_number&quot;:0},&quot;enable&quot;:true}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -442,7 +442,9 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;999999MB&quot;,&quot;msg_clear_interval&quot;:&quot;999999h&quot;,&quot;msg_expiry_interval&quot;:&quot;999999h&quot;,&quot;config&quot;:{&quot;max_retained_messages&quot;:999999,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;max_read_number&quot;:999999,&quot;msg_deliver_quota&quot;:999999,&quot;quota_release_interval&quot;:&quot;999999m&quot;},&quot;enable&quot;:true}</stringProp>
+                  <stringProp name="Argument.value">{&quot;max_payload_size&quot;:&quot;999999MB&quot;,&quot;msg_clear_interval&quot;:&quot;999999h&quot;,&quot;msg_expiry_interval&quot;:&quot;999999h&quot;,&quot;config&quot;:{&quot;max_retained_messages&quot;:999999,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;max_read_number&quot;:999999,&quot;msg_deliver_quota&quot;:999999,&quot;quota_release_interval&quot;:&quot;999999m&quot;},&quot;enable&quot;:true}&#xd;
+&#xd;
+{&quot;max_payload_size&quot;:&quot;999999MB&quot;,&quot;msg_clear_interval&quot;:&quot;999999h&quot;,&quot;msg_expiry_interval&quot;:&quot;999999h&quot;,&quot;backend&quot;:{&quot;max_retained_messages&quot;:999999,&quot;storage_type&quot;:&quot;ram&quot;,&quot;type&quot;:&quot;built_in_database&quot;},&quot;flow_control&quot;:{&quot;batch_deliver_limiter&quot;:&quot;retainer&quot;,&quot;batch_deliver_number&quot;:0,&quot;batch_read_number&quot;:0},&quot;enable&quot;:true}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
