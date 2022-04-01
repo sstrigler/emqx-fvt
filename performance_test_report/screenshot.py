@@ -132,14 +132,13 @@ def demo(report_log):
         header = {
             'Connection': 'keep-alive',
             'Accept-Language': 'en-US',
-            'host': '13.251.133.132',
+            'host': report_ip,
             'ontent-Type': 'application/json; charset=utf-8',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'xmeter-authorization': token,
-            'Referer': 'https://13.251.133.132/commercialPage.html'
+            'xmeter-authorization': token
         }
-        run_test_info_url = "https://{}/commercial_service/rest/testcase/testrun/{}/{}" \
-            .format(report_ip, account_id, report_id)
+        run_test_info_url = "https://{}/commercial_service/rest/testcase/testrun/{}" \
+            .format(report_ip, report_id)
 
         try:
             response = requests.get(run_test_info_url, headers=header, verify=False)
