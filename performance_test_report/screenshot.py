@@ -25,7 +25,8 @@ if not os.path.exists(image_file_path):
 
 logger = logging.getLogger(__name__)
 formatter = logging.Formatter('[%(asctime)s] - %(filename)s] - %(levelname)s: %(message)s')
-level = logging.DEBUG
+level = logging.WARNING
+file_level = logging.DEBUG
 logger.setLevel(level=level)
 console = logging.StreamHandler()
 console.setLevel(level=level)
@@ -37,7 +38,7 @@ if not os.path.exists(log_path):
     os.makedirs(log_path)
 log_filename = os.path.join(log_path, '{}.log'.format(time.strftime("%Y%m%d_%H%M%S")))
 console_file = logging.FileHandler(log_filename, encoding='utf-8')
-console_file.setLevel(level=level)
+console_file.setLevel(level=file_level)
 console_file.setFormatter(formatter)
 logger.addHandler(console_file)
 
@@ -71,6 +72,31 @@ def login(driver, ip):
     driver.find_element_by_css_selector("[type=password]").send_keys('xfypp@sina.com')
     driver.find_element_by_css_selector("#submitLogin").click()
     time.sleep(3)
+
+
+def download_test_results(file_links: list, document_path):
+    for link in file_links:
+        file_name = link.split('/')[-1]
+        logger.info("Downloading file:%s" % file_name)
+
+        test_results_file_path = os.path.join(document_path, file_name)
+
+        r = requests.get(link, stream=True, verify=False)
+
+        try:
+            # download started  r.content   r.iter_content
+            with open(test_results_file_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=1024 * 1024):
+                    if chunk:
+                        f.write(chunk)
+            logger.info("%s downloaded!\n" % file_name)
+
+        except IOError:
+            logger.error("文件下载失败")
+            return False
+
+    logger.info("All videos downloaded!")
+    return True
 
 
 def scroll(driver, report_type: bool):
@@ -145,6 +171,7 @@ def demo(report_log):
             response_body = dict(response.json())
 
             # Get test start time、test end time、EmqxClusterNode
+            asteroid_base_url = response_body['asteroidBaseUrls'][0]
             start_time = int(response_body.get("startTimeAsLong"))
             end_time = int(response_body['endTimeAsLong']) + 20000
             grafana_report_addr = response_body['reports'][0]['reportAddr']
@@ -206,6 +233,19 @@ def demo(report_log):
                 logger.info("Test report screenshot file name: {}".format(test_report_file_name))
 
                 driver.save_screenshot(os.path.join(image_file_path, test_report_file_name))
+
+            """ Download performance test comparison report """
+            test_results_url = "{}/rest/api/asteroid/report/testrun/{}/withprev".format(asteroid_base_url, report_id)
+
+            response = requests.post(test_results_url, headers=header, verify=False)
+            compare_result_file_url = response.json()["url"]
+            logger.info("compare_result_file: {}".format(compare_result_file_url))
+
+            download_results = [compare_result_file_url]
+            comparison_results = "./data/ComparisonResults"
+            if not os.path.exists(comparison_results):
+                os.makedirs(comparison_results)
+            download_test_results(download_results, comparison_results)
 
         except Exception as ec:
             logger.error(ec)
