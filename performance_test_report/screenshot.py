@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 """
 @File    : screenshot.py
-@Time    : 2022/3/3 10:42 上午
+@Time    : 2022/3/3 10:42 pm
 @Author  : Dn_By
 @Software: PyCharm
 """
@@ -17,36 +17,51 @@ import urllib3
 
 urllib3.disable_warnings()
 
-root_path = os.path.dirname(os.path.dirname(__file__))
-project_path = "./"
-image_file_path = "./data/image"
-if not os.path.exists(image_file_path):
-    os.makedirs(image_file_path)
+HTTP_HEADER = {
+            'Connection': 'keep-alive',
+            'Accept-Language': 'en-US',
+            'ontent-Type': 'application/json; charset=utf-8',
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+        }
+
+XMETER_USER = "xfypp@sina.com"
+REPORT_NAME = ""
+LOG_PATH = "./data/log"
+IMAGE_FILE_PATH = "./data/image"
+
+XMETER_ELEMENT_VALUE = ".echarts-for-react"
+# GRAFANA_ELEMENT_VALUE = "[class='graph-legend-alias pointer']"
+GRAFANA_ELEMENT_VALUE = "[class='panel-title-text drag-handle']"
+
 
 logger = logging.getLogger(__name__)
-formatter = logging.Formatter('[%(asctime)s] - %(filename)s] - %(levelname)s: %(message)s')
-level = logging.WARNING
-file_level = logging.DEBUG
-logger.setLevel(level=level)
+formatter = logging.Formatter('[%(asctime)s] - %(filename)s] - %(lineno)d - %(levelname)s: %(message)s')
+waring = logging.WARNING
+debug = logging.DEBUG
+logger.setLevel(level=debug)
 console = logging.StreamHandler()
-console.setLevel(level=level)
+console.setLevel(level=debug)
 console.setFormatter(formatter)
 logger.addHandler(console)
 
-log_path = "./data/log"
-if not os.path.exists(log_path):
-    os.makedirs(log_path)
-log_filename = os.path.join(log_path, '{}.log'.format(time.strftime("%Y%m%d_%H%M%S")))
-console_file = logging.FileHandler(log_filename, encoding='utf-8')
-console_file.setLevel(level=file_level)
-console_file.setFormatter(formatter)
-logger.addHandler(console_file)
+
+def check_filepath(file_path):
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
 
 
-logger.info(root_path)
-logger.info(project_path)
-logger.info(image_file_path)
-logger.info(log_path)
+def log_to_file():
+    log_filename = os.path.join(LOG_PATH, '{}.log'.format(time.strftime("%Y%m%d_%H%M%S")))
+    console_file = logging.FileHandler(log_filename, encoding='utf-8')
+    console_file.setLevel(level=debug)
+    console_file.setFormatter(formatter)
+    logger.addHandler(console_file)
+
+
+def start():
+    check_filepath(LOG_PATH)
+    check_filepath(IMAGE_FILE_PATH)
+    log_to_file()
 
 
 def firefox_driver():
@@ -68,8 +83,8 @@ def login(driver, ip):
     logger.info("Login_URL: {}".format(url))
     driver.get(url)
     WebDriverWait(driver=driver, timeout=90, poll_frequency=0.5) \
-        .until(lambda diver: driver.find_element_by_css_selector("[name=form-alias]")).send_keys('xfypp@sina.com')
-    driver.find_element_by_css_selector("[type=password]").send_keys('xfypp@sina.com')
+        .until(lambda diver: driver.find_element_by_css_selector("[name=form-alias]")).send_keys(XMETER_USER)
+    driver.find_element_by_css_selector("[type=password]").send_keys(XMETER_USER)
     driver.find_element_by_css_selector("#submitLogin").click()
     time.sleep(3)
 
@@ -92,10 +107,10 @@ def download_test_results(file_links: list, document_path):
             logger.info("%s downloaded!\n" % file_name)
 
         except IOError:
-            logger.error("文件下载失败")
+            logger.error("File download failed")
             return False
 
-    logger.info("All videos downloaded!")
+    logger.info("All report downloaded!")
     return True
 
 
@@ -121,144 +136,236 @@ def scroll(driver, report_type: bool):
         driver.set_window_size(width, emqx_cluster_height)
 
 
-def demo(report_log):
-    driver = firefox_driver()
-    report_url = str(report_log)
+def lazy_scroll(driver):
+    js_height = "return document.body.clientHeight"
+    height = driver.execute_script(js_height)
 
-    """ report_url process"""
-    report_name = re.split(' ', report_url, maxsplit=1)[0]
+    k = 1
+    while True:
+        if k * 500 < height:
+            js_move = "window.scrollTo(0,{})".format(k * 500)
+            driver.execute_script(js_move)
+            time.sleep(0.2)
+            height = driver.execute_script(js_height)
+            k += 1
+        else:
+            break
+
+    time.sleep(3)
+    # Get the width and height of the page with js
+    width = driver.execute_script("return document.documentElement.scrollWidth")
+    height = driver.execute_script("return document.documentElement.scrollHeight")
+    driver.set_window_size(width, height)
+    logger.info("Scroll TO Browser width and height[%s: %s]" % (width, height))
+    logger.info("Page loaded successfully, start downloading ...... ")
+
+
+def re_http_path(link: str):
     re_http = r'(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&%\$#_]*)?'
-    report_url = re.search(re_http, report_url, re.M | re.I).group()
+    url = re.search(re_http, link, re.M | re.I).group()
+    return url
+
+
+def re_host(http_path: str):
     re_ip = r"((25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))"
-    re_report_ip = re.search(re_ip, report_url)
-    if re_report_ip is not None:
-        report_ip = re_report_ip.group()
+    host = re.search(re_ip, http_path).group()
+    return host
+
+
+def node_grafana(xmeter_ip, test_id, token):
+    monitors_url = "https://{}/commercial_service/rest/applications/testrun/{}/monitors".format(xmeter_ip, test_id)
+    HTTP_HEADER["xmeter-authorization"] = token
+    HTTP_HEADER["host"] = xmeter_ip
+    try:
+        response = requests.get(monitors_url, headers=HTTP_HEADER, verify=False)
+        response_body = dict(response.json())
+        emqx_nodes = []
+        grafana_monitors = []
+        for node, grafana in response_body.items():
+            emqx_nodes.append(node)
+            grafana_monitors.append(grafana)
+
+        logger.info("get monitors url: {}".format(monitors_url))
+        logger.info("emqx cluster node ip address: {}".format(emqx_nodes))
+        logger.info("emqx cluster node grafana monitor url: {}".format(grafana_monitors))
+        return emqx_nodes, grafana_monitors
+    except Exception as ec:
+        logger.error("Failed to get the resource usage report address of each node in the emq cluster: {}".format(ec))
+        return False
+
+
+def test_info(xmeter_ip, test_id, token):
+    HTTP_HEADER["host"] = xmeter_ip
+    HTTP_HEADER["xmeter-authorization"] = token
+    run_test_info_url = "https://{}/commercial_service/rest/testcase/testrun/{}" \
+        .format(xmeter_ip, test_id)
+    try:
+        response = requests.get(run_test_info_url, headers=HTTP_HEADER, verify=False)
+        response_body = dict(response.json())
+
+        # Get test start time、test end time、EmqxClusterNode
+        test_case_information = {
+            "asteroid_base_url": response_body['asteroidBaseUrls'][0],
+            "start_time": int(response_body.get("startTimeAsLong")),
+            "end_time": int(response_body['endTimeAsLong']) + 20000,
+            "grafana_report_addr": response_body['reports'][0]['reportAddr'],
+            "conf_other_para": json.loads(response_body['confOtherPara'])
+        }
+
+        logger.info("Get test report details: {}".format(run_test_info_url))
+        logger.info("test case information: {}".format(test_case_information))
+        return test_case_information
+    except Exception as ec:
+        logger.error("Failed to get test report details: {}".format(ec))
+        return False
+
+
+def visit_report_page(page_url, driver, report_type=True):
+    """ visit page """
+    if report_type:
+        css_value = XMETER_ELEMENT_VALUE
+    else:
+        css_value = GRAFANA_ELEMENT_VALUE
+
+    driver.get(page_url)
+    logger.info("visit page url: {}".format(page_url))
+    WebDriverWait(driver=driver, timeout=60, poll_frequency=0.5) \
+        .until(lambda diver: driver.find_elements_by_css_selector(css_value))
+    time.sleep(3)
+    lazy_scroll(driver=driver)
+
+
+def save_report_screenshot(page_url, driver, screenshot_name, report_type):
+    """ take screenshot """
+    visit_report_page(page_url=page_url, driver=driver, report_type=report_type)
+    report_image_path = os.path.join(IMAGE_FILE_PATH, screenshot_name)
+    driver.save_screenshot(report_image_path)
+
+    logger.info("Save Screenshot: {}".format(screenshot_name))
+
+
+def download_report_text(base_url, report_id, token, xmeter_ip):
+    """ Download performance test comparison report """
+    HTTP_HEADER["host"] = xmeter_ip
+    HTTP_HEADER["xmeter-authorization"] = token
+    test_results_url = "{}/rest/api/asteroid/report/testrun/{}/withprev".format(base_url, report_id)
+    try:
+        response = requests.post(test_results_url, headers=HTTP_HEADER, verify=False)
+        compare_result_file_url = response.json()["url"]
+        logger.info("compare_result_file: {}".format(compare_result_file_url))
+
+        download_results = [compare_result_file_url]
+        comparison_results = "./data/ComparisonResults"
+        if not os.path.exists(comparison_results):
+            os.makedirs(comparison_results)
+        download_test_results(download_results, comparison_results)
+    except Exception as ec:
+        logger.error("Failed to download performance test comparison report: {}".format(ec))
+
+
+def get_localstorage(driver, param):
+    js_get_param_value = "return localStorage.getItem('{}')".format(param)
+    param_value = driver.execute_script(js_get_param_value)
+    logger.info("localStorage['{}']: {}".format(param, param_value))
+    return param_value
+
+
+def save_emqx_cluster_screenshot(emqx_nodes: list, grafana_monitors: list, driver, start_time, end_time, report_name):
+    """ Access the resource usage report of each node of emqx """
+    grafana_address = grafana_monitors[0]
+    for ip in emqx_nodes:
+        node_consume_report_url = "{}?from={}&to={}&var-hosts={}&theme=light&orgId=1" \
+            .format(grafana_address, start_time, end_time, ip)
+        test_report_file_name = "{}_{}.png".format(report_name, ip)
+        save_report_screenshot(page_url=node_consume_report_url, driver=driver,
+                               screenshot_name=test_report_file_name, report_type=False)
+
+        logger.info("emqx node {} resource usage URL: {}".format(ip, node_consume_report_url))
+        pass
+
+
+def extract_information(report_row):
+    """ Process report.txt """
+    report_name = re.split(' ', report_row, maxsplit=1)[0]
+    report_url = re_http_path(report_row)
+    xmeter_host = re_host(report_url)
+    if xmeter_host is not None:
         report_id = re.split('/', report_url)[-1]
+        logger.info("""
+        Xmeter_ip: {}
+        report_name: {}
+        PerformanceTestReport_url: {}
+        PerformanceTestReportID: {} """.format(xmeter_host, report_name, report_url, report_id))
+        return xmeter_host, report_name, report_url, report_id
+    else:
+        logger.error("Failed to read test report information")
+        raise
 
-        logger.info("report_name: {}".format(report_name))
-        logger.info("PerformanceTestReport_url: {}".format(report_url))
-        logger.info("Xmeter_ip: {}".format(report_ip))
-        logger.info("PerformanceTestReportID: {}".format(report_id))
 
+def main(report_log):
+    report_line = str(report_log)
+    xmeter_host, report_name, report_url, report_id = extract_information(report_line)
+    start()
+    driver = firefox_driver()
+    try:
         """ login """
-        login(driver=driver, ip=report_ip)
+        login(driver=driver, ip=xmeter_host)
 
-        """ get cookies """
-        cookies = driver.get_cookies()
-        js_get_account_id = "return localStorage.getItem('accountId')"
-        account_id = driver.execute_script(js_get_account_id)
-        js_get_token = "return localStorage.getItem('token')"
-        token = driver.execute_script(js_get_token)
+        """ Visit the Test Reports page """
+        report_page_image = "{}_report.png".format(report_name)
+        save_report_screenshot(page_url=report_url, driver=driver, screenshot_name=report_page_image, report_type=True)
 
-        logger.info("Browser Cookies: {}".format(cookies))
-        logger.info("localStorage['accountID']: {}".format(account_id))
-        logger.info("localStorage['token']: {}".format(token))
+        """ get token """
+        token = get_localstorage(driver=driver, param="token")
+
+        """ Get the resource usage report address of each node in the emq cluster """
+        # Get the ip of each node of the emqx cluster
+        emqx_nodes, grafana_monitors = node_grafana(xmeter_ip=xmeter_host, test_id=report_id, token=token)
 
         """ Get test report details """
-        header = {
-            'Connection': 'keep-alive',
-            'Accept-Language': 'en-US',
-            'host': report_ip,
-            'ontent-Type': 'application/json; charset=utf-8',
-            'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'xmeter-authorization': token
-        }
-        run_test_info_url = "https://{}/commercial_service/rest/testcase/testrun/{}" \
-            .format(report_ip, report_id)
+        case_information = test_info(xmeter_ip=xmeter_host, test_id=report_id, token=token)
+        start_time = case_information["start_time"]
+        end_time = case_information["end_time"]
+        asteroid_base_url = case_information["asteroid_base_url"]
 
-        try:
-            response = requests.get(run_test_info_url, headers=header, verify=False)
-            response_body = dict(response.json())
+        """ Access the resource usage report of each node of emqx """
+        save_emqx_cluster_screenshot(emqx_nodes=emqx_nodes, grafana_monitors=grafana_monitors, driver=driver,
+                                     start_time=start_time, end_time=end_time, report_name=report_name)
 
-            # Get test start time、test end time、EmqxClusterNode
-            asteroid_base_url = response_body['asteroidBaseUrls'][0]
-            start_time = int(response_body.get("startTimeAsLong"))
-            end_time = int(response_body['endTimeAsLong']) + 20000
-            grafana_report_addr = response_body['reports'][0]['reportAddr']
-            conf_other_para = json.loads(response_body['confOtherPara'])
-
-            # Get the ip of each node of the emqx cluster
-            cluster_node = []
-            for i in conf_other_para['variables']:
-                node = i['value']
-                cluster_node.append(node)
-
-            logger.info("test start time: %d" % start_time)
-            logger.info("test end time: %d" % end_time)
-            logger.info("emqx cluster node ip: {}".format(cluster_node))
-
-            """ Visit the Test Reports page """
-            grafana_report_url = "{}?from={}&to={}&var-testId={}&theme=light&orgId=1" \
-                .format(grafana_report_addr, start_time, end_time, report_id)
-            driver.get(grafana_report_url)
-
-            logger.info("Grafana test report page_url: {}".format(grafana_report_url))
-
-            WebDriverWait(driver=driver, timeout=60, poll_frequency=0.5) \
-                .until(lambda diver: driver.find_elements_by_css_selector("[class='graph-legend-alias pointer']"))
-            time.sleep(3)
-            scroll(driver=driver, report_type=True)
-
-            """ Get a screenshot of the test report page """
-            test_report_file_name = "{}_report.png".format(report_name)
-
-            logger.info("Test report screenshot file name: {}".format(test_report_file_name))
-
-            driver.save_screenshot(os.path.join(image_file_path, test_report_file_name))
-
-            """ Get the resource usage report address of each node in the emq cluster """
-            emqx_grafana_cluster_node_api = "https://{}/commercial_service/rest/applications/testrun/{}/monitors" \
-                .format(report_ip, report_id)
-            logger.info("Get emqx resource usage page address api: {}".format(emqx_grafana_cluster_node_api))
-            emqx_grafana_cluster_addr = requests.get(emqx_grafana_cluster_node_api, headers=header, verify=False)
-            emqx_grafana_addr = dict(emqx_grafana_cluster_addr.json())[cluster_node[0]]
-            logger.info("emqx resource usage page address: {}".format(emqx_grafana_addr))
-
-            """ Access the resource usage report of each node of emqx """
-            for ip in cluster_node:
-                node_consume_report_url = "{}?from={}&to={}&var-hosts={}&theme=light&orgId=1" \
-                    .format(emqx_grafana_addr, start_time, end_time, ip)
-                driver.get(node_consume_report_url)
-
-                logger.info("emqx node {} resource usage URL: {}".format(ip, node_consume_report_url))
-
-                WebDriverWait(driver=driver, timeout=60, poll_frequency=0.5) \
-                    .until(lambda diver: driver.find_elements_by_css_selector("[class='graph-legend-alias pointer']"))
-                time.sleep(3)
-                scroll(driver=driver, report_type=False)
-
-                """ Get a screenshot of the test report page """
-                test_report_file_name = "{}_{}.png".format(report_name, ip)
-
-                logger.info("Test report screenshot file name: {}".format(test_report_file_name))
-
-                driver.save_screenshot(os.path.join(image_file_path, test_report_file_name))
-
-            """ Download performance test comparison report """
-            test_results_url = "{}/rest/api/asteroid/report/testrun/{}/withprev".format(asteroid_base_url, report_id)
-
-            response = requests.post(test_results_url, headers=header, verify=False)
-            compare_result_file_url = response.json()["url"]
-            logger.info("compare_result_file: {}".format(compare_result_file_url))
-
-            download_results = [compare_result_file_url]
-            comparison_results = "./data/ComparisonResults"
-            if not os.path.exists(comparison_results):
-                os.makedirs(comparison_results)
-            download_test_results(download_results, comparison_results)
-
-        except Exception as ec:
-            logger.error(ec)
-            driver.quit()
-    else:
+        """ Download performance test comparison report """
+        download_report_text(base_url=asteroid_base_url, report_id=report_id, token=token, xmeter_ip=xmeter_host)
         driver.quit()
+    except Exception as ec:
+        driver.quit()
+        logger.error("run failed: {}".format(ec))
+
+
+def eg(report_log):
+    driver = firefox_driver()
+    report_line = str(report_log)
+
+    report_url = re_http_path(report_line)
+    xmeter_host = re_host(report_url)
+    if xmeter_host is not None:
+
+        """ login """
+        login(driver=driver, ip=xmeter_host)
+
+        time.sleep(20)
+        driver.get(report_log)
+        time.sleep(20)
+
+        lazy_scroll(driver)
+
+        time.sleep(5)
+        driver.save_screenshot(os.path.join(IMAGE_FILE_PATH, "test.png"))
 
 
 if __name__ == '__main__':
     with open("./report.txt", "r") as rc:
         for params in rc.readlines():
             logger.info(params)
-            demo(report_log=params)
+            main(report_log=params)
     # for line in open("./report.txt", "r"):
     #     logger.info(line)
     #     demo(report_log=line)
