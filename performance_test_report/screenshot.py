@@ -25,7 +25,7 @@ HTTP_HEADER = {
         }
 
 XMETER_USER = "xfypp@sina.com"
-REPORT_NAME = ""
+REPORT_ID = ""
 LOG_PATH = "./data/log"
 IMAGE_FILE_PATH = "./data/image"
 
@@ -246,21 +246,27 @@ def save_report_screenshot(page_url, driver, screenshot_name, report_type):
 
 def download_report_text(base_url, report_id, token, xmeter_ip):
     """ Download performance test comparison report """
-    HTTP_HEADER["host"] = xmeter_ip
-    HTTP_HEADER["xmeter-authorization"] = token
-    test_results_url = "{}/rest/api/asteroid/report/testrun/{}/withprev".format(base_url, report_id)
-    try:
-        response = requests.post(test_results_url, headers=HTTP_HEADER, verify=False)
-        compare_result_file_url = response.json()["url"]
-        logger.info("compare_result_file: {}".format(compare_result_file_url))
+    global REPORT_ID
+    if str(report_id) != REPORT_ID:
+        HTTP_HEADER["host"] = xmeter_ip
+        HTTP_HEADER["xmeter-authorization"] = token
+        test_results_url = "{}/rest/api/asteroid/report/testrun/{}/withprev".format(base_url, report_id)
+        try:
+            response = requests.post(test_results_url, headers=HTTP_HEADER, verify=False)
+            compare_result_file_url = response.json()["url"]
+            logger.info("compare_result_file: {}".format(compare_result_file_url))
 
-        download_results = [compare_result_file_url]
-        comparison_results = "./data/ComparisonResults"
-        if not os.path.exists(comparison_results):
-            os.makedirs(comparison_results)
-        download_test_results(download_results, comparison_results)
-    except Exception as ec:
-        logger.error("Failed to download performance test comparison report: {}".format(ec))
+            download_results = [compare_result_file_url]
+            comparison_results = "./data/ComparisonResults"
+            if not os.path.exists(comparison_results):
+                os.makedirs(comparison_results)
+            download_test_results(download_results, comparison_results)
+            REPORT_ID = str(report_id)
+        except Exception as ec:
+            logger.error("Failed to download performance test comparison report: {}".format(ec))
+    else:
+        logger.info("The test report has been downloaded")
+        pass
 
 
 def get_localstorage(driver, param):
@@ -338,27 +344,6 @@ def main(report_log):
     except Exception as ec:
         driver.quit()
         logger.error("run failed: {}".format(ec))
-
-
-def eg(report_log):
-    driver = firefox_driver()
-    report_line = str(report_log)
-
-    report_url = re_http_path(report_line)
-    xmeter_host = re_host(report_url)
-    if xmeter_host is not None:
-
-        """ login """
-        login(driver=driver, ip=xmeter_host)
-
-        time.sleep(20)
-        driver.get(report_log)
-        time.sleep(20)
-
-        lazy_scroll(driver)
-
-        time.sleep(5)
-        driver.save_screenshot(os.path.join(IMAGE_FILE_PATH, "test.png"))
 
 
 if __name__ == '__main__':
