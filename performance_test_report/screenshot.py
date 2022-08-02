@@ -89,9 +89,10 @@ def login(driver, ip):
     time.sleep(3)
 
 
-def download_test_results(file_links: list, document_path):
+def download_test_results(file_links: list, document_path, report_name: str):
     for link in file_links:
-        file_name = link.split('/')[-1]
+        report_path = link.split('/')[-1]
+        file_name = report_name + str(report_path)
         logger.info("Downloading file:%s" % file_name)
 
         test_results_file_path = os.path.join(document_path, file_name)
@@ -244,7 +245,7 @@ def save_report_screenshot(page_url, driver, screenshot_name, report_type):
     logger.info("Save Screenshot: {}".format(screenshot_name))
 
 
-def download_report_text(base_url, report_id, token, xmeter_ip):
+def download_report_text(base_url, report_id, token, xmeter_ip, report_name: str):
     """ Download performance test comparison report """
     global REPORT_ID
     if str(report_id) != REPORT_ID:
@@ -260,7 +261,7 @@ def download_report_text(base_url, report_id, token, xmeter_ip):
             comparison_results = "./data/ComparisonResults"
             if not os.path.exists(comparison_results):
                 os.makedirs(comparison_results)
-            download_test_results(download_results, comparison_results)
+            download_test_results(download_results, comparison_results, report_name)
             REPORT_ID = str(report_id)
         except Exception as ec:
             logger.error("Failed to download performance test comparison report: {}".format(ec))
@@ -339,7 +340,8 @@ def main(report_log):
                                      start_time=start_time, end_time=end_time, report_name=report_name)
 
         """ Download performance test comparison report """
-        download_report_text(base_url=asteroid_base_url, report_id=report_id, token=token, xmeter_ip=xmeter_host)
+        download_report_text(base_url=asteroid_base_url, report_id=report_id, token=token, xmeter_ip=xmeter_host,
+                             report_name=report_name)
         driver.quit()
     except Exception as ec:
         driver.quit()
