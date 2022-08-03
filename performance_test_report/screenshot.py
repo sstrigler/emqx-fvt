@@ -92,7 +92,7 @@ def login(driver, ip):
 def download_test_results(file_links: list, document_path, report_name: str):
     for link in file_links:
         report_path = link.split('/')[-1]
-        file_name = report_name + str(report_path)
+        file_name = report_name + "-" + str(report_path)
         logger.info("Downloading file:%s" % file_name)
 
         test_results_file_path = os.path.join(document_path, file_name)
