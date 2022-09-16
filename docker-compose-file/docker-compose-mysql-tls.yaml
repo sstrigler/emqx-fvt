@@ -15,7 +15,7 @@ services:
       - ./certs/server.crt:/etc/certs/server-cert.pem
       - ./certs/server.key:/etc/certs/server-key.pem
     ports:
-      - "3307:3306"
+      - "3306:3306"
     networks:
       - emqx_bridge
     command:

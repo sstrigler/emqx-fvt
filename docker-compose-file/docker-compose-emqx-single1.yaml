@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  emqx_single_server1:
+    container_name: emqx_single1
+    image: $TARGET:$EMQX_TAG
+    healthcheck:
+      test: ["CMD", "/opt/emqx/bin/emqx_ctl", "status"]
+      interval: 5s
+      timeout: 25s
+      retries: 5
+    networks:
+      - emqx_bridge
+networks:
+  emqx_bridge:
+    driver: bridge
+    name: emqx_bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.100.239.0/24
+          gateway: 172.100.239.1
