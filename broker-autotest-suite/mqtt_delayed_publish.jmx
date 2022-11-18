@@ -28,7 +28,7 @@
           </elementProp>
           <elementProp name="emqx_pwd" elementType="Argument">
             <stringProp name="Argument.name">emqx_pwd</stringProp>
-            <stringProp name="Argument.value">public1</stringProp>
+            <stringProp name="Argument.value">public</stringProp>
             <stringProp name="Argument.desc">emqx password</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
