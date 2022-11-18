@@ -28,7 +28,7 @@
           </elementProp>
           <elementProp name="emqx_pwd" elementType="Argument">
             <stringProp name="Argument.name">emqx_pwd</stringProp>
-            <stringProp name="Argument.value">public</stringProp>
+            <stringProp name="Argument.value">public1</stringProp>
             <stringProp name="Argument.desc">emqx password</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -1031,10 +1031,16 @@
           </HTTPSamplerProxy>
           <hashTree>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">msgid;node</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].msgid;$.data[0].node</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">err_msgid;err_node</stringProp>
+              <stringProp name="JSONPostProcessor.referenceNames">msgid</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].msgid</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">node_name</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].node</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err_node_name</stringProp>
             </JSONPostProcessor>
             <hashTree/>
           </hashTree>
@@ -1046,7 +1052,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages/${node}/${msgid}</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages/${node_name}/${msgid}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1075,7 +1081,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages/${node}/${msgid}</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages/${node_name}/${msgid}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1103,7 +1109,7 @@
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <boolProp name="mqtt.debug_response">true</boolProp>
             <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
-            <stringProp name="mqtt.sample_condition_value">10000</stringProp>
+            <stringProp name="mqtt.sample_condition_value">5000</stringProp>
           </net.xmeter.samplers.SubSampler>
           <hashTree>
             <SizeAssertion guiclass="SizeAssertionGui" testclass="SizeAssertion" testname="Size Assertion" enabled="true">
