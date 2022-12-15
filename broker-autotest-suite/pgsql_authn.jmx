@@ -466,7 +466,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
+                <stringProp name="49586">204</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -576,7 +576,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
+                <stringProp name="49586">204</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -778,7 +778,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
+                <stringProp name="49586">204</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -980,7 +980,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
+                <stringProp name="49586">204</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -1182,7 +1182,7 @@ vars.put(&quot;client_cert&quot;,client_cert);
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
+                <stringProp name="49586">204</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
